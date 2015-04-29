@@ -1,0 +1,69 @@
+#!/bin/bash
+# A scipt to make recursive greps easier.  Examples:
+#
+#   grepall foo
+#
+#     locates 'foo' in all files in the directory tree, recursively starting
+#     from the current directory (but ignoring .svn/.bzr subdirs).
+#
+#   grepall -name '*.txt' -- foo
+#
+#     locates 'foo' in all files named '*.txt' in the directory tree.
+#
+
+findargs=()
+grepargs=()
+for arg in "$@"; do
+    if [ "$arg" = -- ]; then
+        findargs=("${grepargs[@]}")
+        grepargs=()
+    else
+        grepargs[${#grepargs[*]}]="$arg"
+    fi
+done
+
+paths=()
+set -- "${findargs[@]}"
+while true; do
+    case "$1" in
+        -*|!|"")
+            break
+            ;;
+        *)
+            paths[${#paths[*]}]="$1"
+            shift
+            ;;
+    esac
+done
+
+find "${paths[@]}" \
+     '(' -name '.svn' -o -name '.bzr' -o -name 'junk' -o -name 'dist' -o -name '.git' -o -name 'tmp' ')' -prune -o \
+     '(' -type f \
+         '!' -name '*.py[co]' \
+         '!' -name '*.fs' \
+         '!' -name 'Data.fs.*' \
+         '!' -name '*.index' \
+         '!' -name '*.lock' \
+         '!' -name '*.tmp' \
+         '!' -name '*.png' \
+         '!' -name '*.jpg' \
+         '!' -name '*.jpeg' \
+         '!' -name '*.gif' \
+         '!' -name '*.bmp' \
+         '!' -name '*.ico' \
+         '!' -name '*.psd' \
+         '!' -name '*.ps' \
+         '!' -name '*.pdf' \
+         '!' -name '*.pickle' \
+         '!' -name '*.zip' \
+         '!' -name '*.gz' \
+         '!' -name '*.so' \
+         '!' -name '*.o' \
+         '!' -name '*.sw[po]' \
+         '!' -name '.#*'  \
+         '!' -name '*~'  \
+         '!' -name 'ID'  \
+         '!' -iname 'tags' \
+         "$@" ')' -print0 \
+    |xargs -0 grep --color=auto -nH "${grepargs[@]}"
+

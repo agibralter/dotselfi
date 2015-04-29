@@ -1,0 +1,59 @@
+[user]
+  name = Aaron Gibralter
+  email = aaron.gibralter@gmail.com
+
+[color]
+  ui = auto
+  diff = auto
+
+[color "diff"]
+  whitespace = red reverse
+
+[alias]
+  up   = remote update -p
+  mff  = merge --ff-only @{u}
+  upm  = "!git remote update -p; git merge --ff-only @{u}"
+  lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  lga  = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  # http://think-like-a-git.net/sections/graphs-and-git/visualizing-your-git-repository.html
+  # lga  = log --oneline --abbrev-commit --all --graph --decorate --color
+  # http://stackoverflow.com/questions/2016901/viewing-unpushed-git-commits
+  bup  = log --branches --not --remotes --simplify-by-decoration --decorate --oneline
+  pick = cherry-pick -s
+  co   = checkout
+  cob  = checkout -b
+  cot  = checkout -t
+  cm   = commit
+  a    = add
+  s    = status
+  b    = branch -vv --color
+  ba   = branch -vv --color -a
+  bm   = branch -vv --color --merged
+  bd   = branch -d
+  d    = diff
+  dc   = diff --cached
+
+[push]
+  default = current
+
+[github]
+  user = agibralter
+
+[core]
+  quotepath = false
+  excludesfile = ~/.gitignore_global
+
+[credential]
+  helper = osxkeychain
+
+[mergetool "fugitive"]
+  cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+
+[merge]
+  tool = fugitive
+
+[diff]
+  tool = vimdiff
+
+[rerere]
+  enabled = 1

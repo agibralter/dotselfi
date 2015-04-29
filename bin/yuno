@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'rubygems'
+require 'nokogiri'
+
+url = URI.parse 'http://memegenerator.net/Instance/CreateOrEdit'
+res = Net::HTTP.post_form(url, {
+  'templateType'  => 'AdviceDogSpinoff',
+  'text0'         => ARGV[0],
+  'text1'         => ARGV[1],
+  'templateID'    => '165241',
+  'generatorName' => 'Y-U-NO'
+})
+
+location = res['Location']
+res = Net::HTTP.start(url.host, url.port) { |http|
+  http.get location
+}
+
+doc = Nokogiri.HTML res.body
+
+puts doc.css("a[href=\"#{location}\"] img").first['src']

@@ -1,0 +1,25 @@
+--type-add=ruby=.haml,.rake,.rsel,.builder,.rabl,.hyper
+--type-add=html=.html.erb,.html.haml
+--type-add=js=.js.erb
+--type-add=css=.sass,.less,.scss
+--type-set=cucumber=.feature
+--type-set=scss=.scss
+--type-set=haml=.haml
+--type-set=mustache=.mustache
+--type-set=rabl=.rabl
+--type-set=coffee=.coffee
+--type-set=hbs=.hbs
+--type-set=jst=.jst
+
+# Ignore stuff.
+--type-set=log=.log
+--type-set=pyc=.pyc
+--no-log
+--no-pyc
+--ignore-file=is:tags
+--ignore-file=is:.noseids
+
+--sort-files
+--color
+--follow
+--group
