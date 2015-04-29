@@ -1,2 +1,2 @@
 # dotselfi
-New and improved.
+Dotfiles. New and improved.
