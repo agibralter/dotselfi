@@ -26,6 +26,7 @@
   cm   = commit
   a    = add
   s    = status
+  st   = status
   b    = branch -vv --color
   ba   = branch -vv --color -a
   bm   = branch -vv --color --merged
