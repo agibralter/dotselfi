@@ -29,10 +29,6 @@ stty start ''
 stty -ixon
 stty -ixoff
 
-# Brew said I should not have this set.
-export CLICOLOR=1
-export LSCOLORS=hxfxcxdxbxegedabagHxHx
-
 # History control
 export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
