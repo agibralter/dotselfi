@@ -3,6 +3,9 @@ export BASH_ENV=$HOME/.bashrc
 # Source .bashrc
 if [ -f $HOME/.bashrc ]; then source $HOME/.bashrc; fi
 
+# Source extras.
+if [ -f $HOME/.bash_extras ]; then source $HOME/.bash_extras; fi
+
 # Set up rvm...
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
   source "$HOME/.rvm/scripts/rvm"
