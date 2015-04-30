@@ -7,3 +7,4 @@ Dotfiles. New and improved.
 
 ## important brew deps
 * bash-completion
+* ctags
