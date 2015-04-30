@@ -43,16 +43,9 @@ which brew > /dev/null
 if [ $? -eq 0 ]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
+    source $HOME/.bin/git-completion.bash
   fi
 fi
-
-set completion-ignore-case On
-
-for comp in \
-  ~/bin/git-completion.bash
-do
-  [[ -e $comp ]] && source $comp
-done
 
 # Colors
 RED="\[\033[0;31m\]"
