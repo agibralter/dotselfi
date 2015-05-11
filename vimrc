@@ -1,6 +1,8 @@
 " Prevent output in terminal
 let &shellpipe="&>"
 
+set mouse=a
+
 set diffopt+=vertical
 
 set showtabline=2 " Always show tab bar
