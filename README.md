@@ -9,3 +9,4 @@ Dotfiles. New and improved.
 * bash-completion
 * ctags
 * pstree
+* node
