@@ -10,6 +10,8 @@ Dotfiles. New and improved.
 * `ctags`
 * `pstree`
 * `node`
+* `vim` (use 7.4!)
+* `macvim` (make sure to `brew linkapps macvim`)
 
 ## other things to install
 * `npm install -g jshint`
