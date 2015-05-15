@@ -85,9 +85,6 @@
 [submodule "vim/bundle/vim-bufonly"]
 	path = vim/bundle/vim-bufonly
 	url = https://github.com/duff/vim-bufonly.git
-[submodule "vim/bundle/AutoTag"]
-	path = vim/bundle/AutoTag
-	url = https://github.com/vim-scripts/AutoTag.git
 [submodule "vim/bundle/vim-bundler"]
 	path = vim/bundle/vim-bundler
 	url = git://github.com/tpope/vim-bundler.git
