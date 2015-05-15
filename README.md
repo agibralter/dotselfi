@@ -3,10 +3,13 @@ Dotfiles. New and improved.
 
 ## setup
 1. Make sure to init submodules after clone.
-2. Run ./install-dotfiles.sh
+2. Run `./install-dotfiles.sh`
 
 ## important brew deps
-* bash-completion
-* ctags
-* pstree
-* node
+* `bash-completion`
+* `ctags`
+* `pstree`
+* `node`
+
+## other things to install
+* `npm install -g jshint`
