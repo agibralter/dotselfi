@@ -240,27 +240,8 @@ map <Leader>sc :call RunCurrentSpecFile()<CR>
 map <Leader>sn :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 
-" Disable useless HTML5 junk
-" let g:event_handler_attributes_complete = 0
-" let g:rdfa_attributes_complete = 0
-" let g:microdata_attributes_complete = 0
-" let g:atia_attributes_complete = 0
-
 " Stop it, hash key
 inoremap # X<BS>#
-
-" Tags! (automatically found in path)
-" let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-let Tlist_WinWidth = 50
-let Tlist_Show_One_File = 1
-map <F4> :TlistToggle<cr>
-" map <leader>T :!/usr/local/bin/ctags --exclude='**/ckeditor' -R . $(test -f .venv && echo ~/lib/virtualenvs/`cat .venv`)<CR>
-"
-" CTAGS
-" Open the definition in a new tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" Open the definition in a vertical split
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
