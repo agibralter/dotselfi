@@ -13,6 +13,11 @@ filetype plugin indent on
 compiler ruby
 call pathogen#infect()
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Security
 set modelines=0
 
@@ -22,6 +27,7 @@ let $JS_CMD='node'
 
 " airline
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 " gitgutter options
 let g:gitgutter_highlight_lines = 0
@@ -115,8 +121,6 @@ set ttyfast
 set laststatus=2
 set undofile
 set undoreload=10000
-"set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Backups (use // so that vim uses full paths for backup names)
 set backupdir=~/.vimtmp/backup// " backups
