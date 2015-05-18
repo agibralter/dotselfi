@@ -15,3 +15,4 @@ Dotfiles. New and improved.
 
 ## other things to install
 * `npm install -g jshint`
+* [Powerline fonts](https://github.com/powerline/fonts) for vim-airline.
