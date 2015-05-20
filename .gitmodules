@@ -160,3 +160,6 @@
 [submodule "vim/bundle/vim-gutentags"]
 	path = vim/bundle/vim-gutentags
 	url = git@github.com:ludovicchabant/vim-gutentags.git
+[submodule "vim/bundle/vim-visual-star-search"]
+	path = vim/bundle/vim-visual-star-search
+	url = git@github.com:bronson/vim-visual-star-search.git
