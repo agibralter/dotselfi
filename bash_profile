@@ -1,3 +1,7 @@
+###############################################################################
+# bash setup
+###############################################################################
+
 export BASH_ENV=$HOME/.bashrc
 
 # Source .bashrc
@@ -5,6 +9,10 @@ if [ -f $HOME/.bashrc ]; then source $HOME/.bashrc; fi
 
 # Source extras.
 if [ -f $HOME/.bash_extras ]; then source $HOME/.bash_extras; fi
+
+###############################################################################
+# lib setup
+###############################################################################
 
 # Set up rvm...
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
@@ -23,6 +31,57 @@ if [ $? -eq 0 ]; then
   eval "$(tmuxifier init -)"
 fi
 
+# Tab Completions
+which brew > /dev/null
+if [ $? -eq 0 ]; then
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+    source $HOME/.bin/git-completion.bash
+  fi
+fi
+
+# bcat!
+which bcat > /dev/null
+if [ $? -eq 0 ]; then
+  export MANPAGER="col -b | bcat"
+  export GIT_PAGER="bcat"
+fi
+
+
+# virtualenvwrapper!
+which virtualenvwrapper.sh > /dev/null
+if [ $? -eq 0 ]; then
+  source `which virtualenvwrapper.sh`
+fi
+
+###############################################################################
+# aliases
+###############################################################################
+
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+alias ls="ls -GF"
+alias ll="ls -alGF"
+alias g="git"
+alias sizes="du -h -d1"
+alias be="bundle exec"
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias pstreeme="pstree -aup $(whoami)"
+alias killpyc="find . -name '*.pyc' -delete"
+
+# hub!
+which hub > /dev/null
+if [ $? -eq 0 ]; then
+  alias git=hub
+fi
+
+# ctags!
+which ctags > /dev/null
+if [ $? -eq 0 ]; then
+  alias ctagit="ctags -R --exclude=.git --exclude=log --exclude=public *"
+fi
+
 # Stop the annoying ctrl-s/ctrl-q control flow mappings.
 stty stop ''
 stty start ''
@@ -34,14 +93,9 @@ export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
 shopt -s histappend
 
-# Tab Completions
-which brew > /dev/null
-if [ $? -eq 0 ]; then
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-    source $HOME/.bin/git-completion.bash
-  fi
-fi
+###############################################################################
+# bash prompt
+###############################################################################
 
 # Colors
 RED="\[\033[0;31m\]"
@@ -59,18 +113,6 @@ UP_ARROW="↑"
 DOWN_ARROW="↓"
 UD_ARROW="↕"
 RECYCLE="♺"
-
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
-alias ls="ls -GF"
-alias ll="ls -alGF"
-alias g="git"
-alias sizes="du -h -d1"
-alias be="bundle exec"
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias pstreeme="pstree -aup $(whoami)"
-alias killpyc="find . -name '*.pyc' -delete"
 
 function parse_git_branch {
   branch_pattern="^(# )?On branch ([^${IFS}]*)"
@@ -119,6 +161,11 @@ function set_prompt() {
 
 export PROMPT_COMMAND=set_prompt
 
+
+###############################################################################
+# random functions
+###############################################################################
+
 function git-root() {
   root=$(git rev-parse --git-dir 2> /dev/null)
   if [[ "$root" == "" ]]; then root="."; fi
@@ -134,28 +181,3 @@ exclude="\.svn|\.git|\.swp|\.coverage|\.pyc|_build"
 function pgrep() {
   find . -maxdepth 1 -mindepth 1| egrep -v "$exclude" | xargs egrep -lir "$1" | egrep -v "$exclude" | xargs egrep -Hin --color "$1"
 }
-
-# bcat!
-which bcat > /dev/null
-if [ $? -eq 0 ]; then
-  export MANPAGER="col -b | bcat"
-  export GIT_PAGER="bcat"
-fi
-
-# hub!
-which hub > /dev/null
-if [ $? -eq 0 ]; then
-  alias git=hub
-fi
-
-# ctags!
-which ctags > /dev/null
-if [ $? -eq 0 ]; then
-  alias ctagit="ctags -R --exclude=.git --exclude=log --exclude=public *"
-fi
-
-# virtualenvwrapper!
-which virtualenvwrapper.sh > /dev/null
-if [ $? -eq 0 ]; then
-  source `which virtualenvwrapper.sh`
-fi
