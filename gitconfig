@@ -35,7 +35,7 @@
   dc   = diff --cached
 
 [push]
-  default = current
+  default = simple
 
 [github]
   user = agibralter
