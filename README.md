@@ -15,6 +15,7 @@ Dotfiles. New and improved.
 * `node`
 * `vim` (use 7.4!)
 * `macvim` (make sure to `brew linkapps macvim`)
+* `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
 
 ## other important brews
 * `rbenv`
