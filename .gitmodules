@@ -163,3 +163,6 @@
 [submodule "vim/bundle/vim-visual-star-search"]
 	path = vim/bundle/vim-visual-star-search
 	url = git@github.com:bronson/vim-visual-star-search.git
+[submodule "vim/bundle/editorconfig-vim"]
+	path = vim/bundle/editorconfig-vim
+	url = git@github.com:editorconfig/editorconfig-vim.git
