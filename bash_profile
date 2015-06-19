@@ -183,16 +183,3 @@ exclude="\.svn|\.git|\.swp|\.coverage|\.pyc|_build"
 function pgrep() {
   find . -maxdepth 1 -mindepth 1| egrep -v "$exclude" | xargs egrep -lir "$1" | egrep -v "$exclude" | xargs egrep -Hin --color "$1"
 }
-
-function git_list_changed_specs {
-  if [ $# -ge 1 ]; then
-    git log $1 &> /dev/null
-    if [ $? -eq 0 ]; then
-      (git ls-files -m ; git log $1 --name-only --no-color --pretty=format:) | grep _spec | sort | uniq
-    else
-      echo "Invalid commit range."
-    fi
-  else
-    echo "Please enter a commit range."
-  fi
-}

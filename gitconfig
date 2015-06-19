@@ -33,6 +33,8 @@
   bd   = branch -d
   d    = diff
   dc   = diff --cached
+  # https://twitter.com/rickosborneorg/status/438395762213269505
+  lsc  = "!f() { (git ls-files -m ; git log $1 --name-only --no-color --pretty=format:) | sort | uniq | grep -v '^$'; }; f"
 
 [push]
   default = simple
