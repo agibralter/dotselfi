@@ -245,6 +245,7 @@ inoremap # X<BS>#
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+nmap <F9> :TagbarOpen fjc<CR>
 
 if has("autocmd")
   augroup defaults
