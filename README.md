@@ -16,6 +16,7 @@ Dotfiles. New and improved.
 * `vim` (use 7.4!)
 * `macvim` (make sure to `brew linkapps macvim`)
 * `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
+* `the_silver_searcher` [link](https://github.com/ggreer/the_silver_searcher)
 
 ## other important brews
 * `rbenv`
