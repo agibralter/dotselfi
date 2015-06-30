@@ -13,9 +13,10 @@ filetype plugin indent on
 compiler ruby
 call pathogen#infect()
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_jump = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_wq = 0
 
 " Security
@@ -169,6 +170,9 @@ let NERDTreeWinSize=30
 
 " Set ack path
 let g:ackprg="~/.bin/ack -H --nocolor --nogroup --column"
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Quick .vimrc edit
 nmap <leader>ev :tabedit $MYVIMRC<CR>
