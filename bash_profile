@@ -161,7 +161,7 @@ function set_prompt() {
   export PS1="$RED\$(date +%H:%M) ${HOSTNAME} $LT_GREEN[\w] ${git_prompt}\n${BLUE}\$${COLOR_NONE} "
 }
 
-export PROMPT_COMMAND=set_prompt
+PROMPT_COMMAND=set_prompt
 
 
 ###############################################################################
