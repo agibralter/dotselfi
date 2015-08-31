@@ -45,7 +45,7 @@ let g:session_autosave = 'no'
 
 " ctrlp.vim
 let g:ctrlp_map = '<Leader>t'
-" let g:ctrlp_user_command = 'find %s -type f'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " Do not manage project root
 let g:ctrlp_working_path_mode = 0
 " only jump to the buffer if it is opened in the current tab
