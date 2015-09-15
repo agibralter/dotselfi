@@ -20,19 +20,19 @@ if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
 fi
 
 # ... or rbenv.
-which rbenv > /dev/null
+hash rbenv 2>/dev/null
 if [ $? -eq 0 ]; then
   eval "$(rbenv init -)"
 fi
 
 # Set up tmuxifier.
-which tmuxifier > /dev/null
+hash tmuxifier 2>/dev/null
 if [ $? -eq 0 ]; then
   eval "$(tmuxifier init -)"
 fi
 
 # Tab Completions
-which brew > /dev/null
+hash brew 2>/dev/null
 if [ $? -eq 0 ]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
@@ -43,7 +43,7 @@ if [ $? -eq 0 ]; then
 fi
 
 # bcat!
-which bcat > /dev/null
+hash bcat 2>/dev/null
 if [ $? -eq 0 ]; then
   export MANPAGER="col -b | bcat"
   export GIT_PAGER="bcat"
@@ -51,9 +51,18 @@ fi
 
 
 # virtualenvwrapper!
-which virtualenvwrapper.sh > /dev/null
+hash virtualenvwrapper.sh 2>/dev/null
 if [ $? -eq 0 ]; then
-  source `which virtualenvwrapper.sh`
+  source `command -v virtualenvwrapper.sh`
+fi
+
+# docker!
+hash docker-machine 2>/dev/null
+if [ $? -eq 0 ]; then
+  DOCKER_ENV=`docker-machine env default 2>/dev/null`
+  if [ $? -eq 0 ]; then
+    eval $DOCKER_ENV
+  fi
 fi
 
 ###############################################################################
@@ -73,13 +82,13 @@ alias pstreeme="pstree -aup $(whoami)"
 alias killpyc="find . -name '*.pyc' -delete"
 
 # hub!
-which hub > /dev/null
+hash hub 2>/dev/null
 if [ $? -eq 0 ]; then
   alias git=hub
 fi
 
 # ctags!
-which ctags > /dev/null
+hash ctags 2>/dev/null
 if [ $? -eq 0 ]; then
   alias ctagit="ctags -R --exclude=.git --exclude=log --exclude=public *"
 fi
@@ -121,7 +130,7 @@ function parse_git_branch {
   remote_pattern="(# )?Your branch is (.*) of"
   diverge_pattern="(# )?Your branch and (.*) have diverged"
 
-  git_status="$(git status 2> /dev/null)"
+  git_status="$(git status 2>/dev/null)"
   if [[ ! ${git_status} =~ ${branch_pattern} ]]; then
     return
   fi
@@ -135,7 +144,7 @@ function parse_git_branch {
   fi
 
   # Do we need to push to origin?
-  git_log_linecount="$(git log --pretty=oneline origin/${branch}..${branch} 2> /dev/null | wc -l)"
+  git_log_linecount="$(git log --pretty=oneline origin/${branch}..${branch} 2>/dev/null | wc -l)"
   if [[ ! ${git_log_linecount} =~ "0" ]]; then
     needs_push="${WHITE}${RECYCLE}"
   fi
@@ -169,7 +178,7 @@ PROMPT_COMMAND=set_prompt
 ###############################################################################
 
 function git-root() {
-  root=$(git rev-parse --git-dir 2> /dev/null)
+  root=$(git rev-parse --git-dir 2>/dev/null)
   if [[ "$root" == "" ]]; then root="."; fi
   dirname $root
 }
