@@ -32,7 +32,6 @@ mkdir -p $HOME/.ssh
 chmod 700 $HOME/.ssh
 
 # Set up $HOME/.vimtmp
-ln -nfs $DIR/vimtmp $HOME/.vimtmp
 mkdir -p $HOME/.vimtmp/backup
 mkdir -p $HOME/.vimtmp/sessions
 mkdir -p $HOME/.vimtmp/swap

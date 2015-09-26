@@ -9,7 +9,7 @@ Dotfiles. New and improved.
    [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) requires `git
    submodule update --init --recursive`.
 2. Run `./install-dotfiles.sh`.
-3. `cd vim/bundles/YouCompleteMe; ./install.sh --clang-completer
+3. `cd vim/bundles/YouCompleteMe; ./install.py --clang-completer
    --gocode-completer`.
 
 ## important brew deps for dotselfi
@@ -17,6 +17,7 @@ Dotfiles. New and improved.
 * `ctags`
 * `pstree`
 * `node`
+* `golang` (YouCompleteMe)
 * `vim` (use 7.4!)
 * `macvim` (make sure to `brew linkapps macvim`)
 * `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
