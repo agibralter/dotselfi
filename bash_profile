@@ -192,3 +192,5 @@ exclude="\.svn|\.git|\.swp|\.coverage|\.pyc|_build"
 function pgrep() {
   find . -maxdepth 1 -mindepth 1| egrep -v "$exclude" | xargs egrep -lir "$1" | egrep -v "$exclude" | xargs egrep -Hin --color "$1"
 }
+
+source ~/.iterm2_shell_integration.`basename $SHELL`

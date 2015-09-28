@@ -37,24 +37,26 @@ mkdir -p $HOME/.vimtmp/sessions
 mkdir -p $HOME/.vimtmp/swap
 mkdir -p $HOME/.vimtmp/undo
 
+relink bin
+relink js
+relink tmux-layouts
+relink tmuxifier
+relink vim
+
 relink ackrc
 relink bash_profile
 relink bashrc
-relink bin
 relink gemrc
 relink gitconfig
 relink gitignore_global
 relink gvimrc
 relink irbrc
-relink js
+relink iterm2_shell_integration.bash
 relink jslintrc
 relink rdebugrc
 relink rvmrc
-relink tmux-layouts
 relink tmux.conf
-relink tmuxifier
 relink vimrc
-relink vim
 relink zshrc
 
 echo "Done!"
