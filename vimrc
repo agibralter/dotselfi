@@ -18,6 +18,8 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_jump = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_ruby_checkers=['mri', 'rubocop']
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Security
 set modelines=0
@@ -25,6 +27,10 @@ set modelines=0
 let mapleader = ","
 
 let $JS_CMD='node'
+
+" copy path to clipboard
+nmap cp :let @+ = expand("%:p")<CR>
+set clipboard=unnamed
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -36,7 +42,7 @@ let g:gitgutter_sign_column_always = 0
 " Don't gitgutter in realtime... too slow over ssh.
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
-map <F6> :GitGutterLineHighlightsToggle<cr>
+map <F6> :GitGutterLineHighlightsToggle<CR>
 
 " Set options for vim-session
 let g:session_directory = '~/.vimtmp/sessions'
@@ -150,7 +156,7 @@ set incsearch
 set showmatch
 set hlsearch
 set gdefault
-map <leader><space> :noh<cr>
+map <leader><space> :noh<CR>
 runtime macros/matchit.vim
 nmap <tab> %
 vmap <tab> %
@@ -162,8 +168,8 @@ set formatoptions=qrn1
 set colorcolumn=79
 
 " NERD Tree
-map <leader><F2> :NERDTree<cr>
-map <F2> :NERDTreeToggle<cr>
+map <leader><F2> :NERDTree<CR>
+map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '.*\.pyc$', 'pip-log\.txt$']
 nnoremap <leader>rr :NERDTreeFind<CR>
 let NERDTreeWinSize=30
@@ -219,8 +225,8 @@ map <leader>A :LAck<Space>
 nnoremap <leader>z :ZoomWin<CR>
 
 " Yankring
-nnoremap <silent> <F3> :YRShow<cr>
-nnoremap <silent> <leader>y :YRShow<cr>
+nnoremap <silent> <F3> :YRShow<CR>
+nnoremap <silent> <leader>y :YRShow<CR>
 
 " Formatting, TextMate-style
 map <leader>q gqip
@@ -334,7 +340,7 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 if has('gui_running')
-  set guifont="Droid Sans Mono":h12
+  set guifont=Inconsolata-g\ for\ Powerline:h14
   set background=light
 
   set go-=T
