@@ -36,7 +36,7 @@
   dw   = diff -w
   # https://twitter.com/rickosborneorg/status/438395762213269505
   lsc  = "!f() { (git ls-files -m ; git log $1 --name-only --no-color --pretty=format:) | sort | uniq | grep -v '^$'; }; f"
-  psu  = push --set-upstream
+  pfwl = push --force-with-lease
 
 [push]
   default = simple
