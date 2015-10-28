@@ -69,7 +69,7 @@
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/scss-syntax.vim"]
 	path = vim/bundle/scss-syntax.vim
-	url = git@github.com:agibralter/scss-syntax.vim.git
+	url = https://github.com/agibralter/scss-syntax.vim.git
 [submodule "vim/bundle/vim-indent-guides"]
 	path = vim/bundle/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
@@ -159,16 +159,16 @@
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/vim-gutentags"]
 	path = vim/bundle/vim-gutentags
-	url = git@github.com:ludovicchabant/vim-gutentags.git
+	url = https://github.com/ludovicchabant/vim-gutentags.git
 [submodule "vim/bundle/vim-visual-star-search"]
 	path = vim/bundle/vim-visual-star-search
-	url = git@github.com:bronson/vim-visual-star-search.git
+	url = https://github.com/bronson/vim-visual-star-search.git
 [submodule "vim/bundle/editorconfig-vim"]
 	path = vim/bundle/editorconfig-vim
-	url = git@github.com:editorconfig/editorconfig-vim.git
+	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "vim/bundle/YouCompleteMe"]
 	path = vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
+	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
+	url = https://github.com/SirVer/ultisnips.git
