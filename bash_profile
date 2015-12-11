@@ -194,3 +194,9 @@ function pgrep() {
 }
 
 source ~/.iterm2_shell_integration.`basename $SHELL`
+
+# Set up direnv (must be last thing that modifies prompt).
+hash direnv 2>/dev/null
+if [ $? -eq 0 ]; then
+  eval "$(direnv hook bash)"
+fi

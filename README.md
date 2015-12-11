@@ -23,6 +23,7 @@ Dotfiles. New and improved.
 * `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
 * `the_silver_searcher` [link](https://github.com/ggreer/the_silver_searcher)
 * `cmake` (for YouCompleteMe Vim bundle)
+* `direnv` [link](https://github.com/direnv/direnv)
 
 ## other important brews
 * `rbenv`
@@ -34,3 +35,12 @@ Dotfiles. New and improved.
 ## other things to install/setup
 * `npm install -g jshint`
 * [Powerline fonts](https://github.com/powerline/fonts) for vim-airline.
+
+## notes
+* To use direnv with rbenv, bundler, and binstubs, run (e.g.):
+
+    bundle install --binstubs .bundler_bin
+
+  And add the following to the project's .envrc file:
+
+    PATH_add .bundler_bin
