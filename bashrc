@@ -22,6 +22,11 @@ fi
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
+# https://twitter.com/tpope/status/165631968996900865
+# Add bin/ directories within "trusted" local repos to be in PATH. Make sure
+# to "trust" a repo by running `mkdir .git/safe-binstubs`.
+# export PATH=".git/safe-binstubs/../../bin:$PATH"
+
 ###############################################################################
 # Use MacVim or Vim as $EDITOR?
 ###############################################################################
