@@ -37,10 +37,11 @@ Dotfiles. New and improved.
 * [Powerline fonts](https://github.com/powerline/fonts) for vim-airline.
 
 ## notes
-* To use direnv with rbenv, bundler, and binstubs, run (e.g.):
+
+To use direnv with rbenv, bundler, and binstubs, run (e.g.):
 
     bundle install --binstubs .bundler_bin
 
-  And add the following to the project's .envrc file:
+And add the following to the project's .envrc file:
 
     PATH_add .bundler_bin
