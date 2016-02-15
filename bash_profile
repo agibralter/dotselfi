@@ -4,6 +4,8 @@
 
 export BASH_ENV=$HOME/.bashrc
 
+export DOTSELFI=$(dirname $(readlink ${BASH_SOURCE[@]}))
+
 # Source .bashrc
 if [ -f $HOME/.bashrc ]; then source $HOME/.bashrc; fi
 
@@ -80,6 +82,8 @@ alias be="bundle exec"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias pstreeme="pstree -aup $(whoami)"
 alias killpyc="find . -name '*.pyc' -delete"
+
+alias cdd="cd $DOTSELFI"
 
 # hub!
 hash hub 2>/dev/null
