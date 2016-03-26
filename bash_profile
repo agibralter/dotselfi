@@ -90,6 +90,7 @@ alias be="bundle exec"
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias pstreeme="pstree -aup $(whoami)"
 alias killpyc="find . -name '*.pyc' -delete"
+alias bip="bundle install --binstubs=.bundler_bin --path=vendor/bundle"
 
 alias cdd="cd $DOTSELFI"
 
