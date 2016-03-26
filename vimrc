@@ -361,7 +361,7 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 if has('gui_running')
-  set guifont=Inconsolata-g\ for\ Powerline:h14
+  set guifont=Inconsolata-g\ for\ Powerline:h12
   set background=light
 
   set go-=T
