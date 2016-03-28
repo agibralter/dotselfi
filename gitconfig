@@ -37,6 +37,7 @@
   # https://twitter.com/rickosborneorg/status/438395762213269505
   lsc  = "!f() { (git ls-files -m ; git log $1 --name-only --no-color --pretty=format:) | sort | uniq | grep -v '^$'; }; f"
   pfwl = push --force-with-lease
+  pot  = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
 
 [push]
   default = simple
