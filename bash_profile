@@ -113,9 +113,14 @@ stty -ixon
 stty -ixoff
 
 # History control
-export HISTCONTROL=ignoredups
-export HISTCONTROL=ignoreboth
+export HISTFILESIZE=10000
+export HISTSIZE=10000
+export HISTIGNORE="[bf]g:[ ]*:exit:??"
+export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
+shopt -s cmdhist
+
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 ###############################################################################
 # bash prompt
