@@ -147,9 +147,16 @@ UD_ARROW="↕"
 RECYCLE="♺"
 
 function parse_git_branch {
-  branch_pattern="^(# )?On branch ([^${IFS}]*)"
-  remote_pattern="(# )?Your branch is (.*) of"
-  diverge_pattern="(# )?Your branch and (.*) have diverged"
+  local branch_pattern="^(# )?On branch ([^${IFS}]*)"
+  local remote_pattern="(# )?Your branch is (.*) of"
+  local diverge_pattern="(# )?Your branch and (.*) have diverged"
+  local initials=`git config user.initials`
+
+  if [[ -n $initials ]]; then
+    initials=" [${initials}] "
+  else
+    initials=""
+  fi
 
   git_status="$(git status 2>/dev/null)"
   if [[ ! ${git_status} =~ ${branch_pattern} ]]; then
@@ -183,7 +190,7 @@ function parse_git_branch {
     remote="${YELLOW}${UD_ARROW}"
   fi
 
-  echo "(${branch})${remote}${git_is_dirty}${needs_push}"
+  echo "(${branch})${initials}${remote}${git_is_dirty}${needs_push}"
 }
 
 function set_prompt() {
