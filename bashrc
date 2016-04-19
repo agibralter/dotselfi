@@ -1,4 +1,4 @@
-# vim: set ft=sh:
+# vim: ft=sh
 
 # Add RVM to PATH
 if [ -d "$HOME/.rvm/bin" ]; then
