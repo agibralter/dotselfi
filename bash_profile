@@ -123,7 +123,7 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 shopt -s cmdhist
 
-export PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 ###############################################################################
 # bash prompt
@@ -198,7 +198,7 @@ function set_prompt() {
   export PS1="$RED\$(date +%H:%M) ${HOSTNAME} $LT_GREEN[\w] ${git_prompt}\n${BLUE}\$${COLOR_NONE} "
 }
 
-PROMPT_COMMAND=set_prompt
+PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 
 
 ###############################################################################
