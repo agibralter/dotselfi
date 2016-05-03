@@ -123,7 +123,7 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 shopt -s cmdhist
 
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 ###############################################################################
 # bash prompt
