@@ -60,24 +60,6 @@ if [ $? -eq 0 ]; then
   source `command -v virtualenvwrapper.sh`
 fi
 
-# docker!
-function docker-setup() {
-  docker-machine status default | grep "Running" >/dev/null 2>&1
-  if [ $? -ne 0 ]; then
-    docker-machine stop default 2>/dev/null
-    docker-machine start default 2>/dev/null
-  fi
-  DOCKER_ENV=`docker-machine env default 2>/dev/null`
-  if [ $? -eq 0 ]; then
-    eval $DOCKER_ENV
-  fi
-}
-
-hash docker-machine 2>/dev/null
-if [ $? -eq 0 ]; then
-  docker-setup
-fi
-
 ###############################################################################
 # aliases
 ###############################################################################
