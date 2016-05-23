@@ -24,36 +24,10 @@ fi
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
-# https://twitter.com/tpope/status/165631968996900865
-# Add bin/ directories within "trusted" local repos to be in PATH. Make sure
-# to "trust" a repo by running `mkdir .git/safe-binstubs`.
-# export PATH=".git/safe-binstubs/../../bin:$PATH"
-
-###############################################################################
-# Use MacVim or Vim as $EDITOR?
-###############################################################################
-# From mvim script...
-if [ -z "$VIM_APP_DIR" ]; then
-  for i in ~/Applications ~/Applications/vim /Applications /Applications/vim /Applications/Utilities /Applications/Utilities/vim; do
-    if [ -x "$i/MacVim.app" ]; then
-      VIM_APP_DIR="$i"
-      break
-    fi
-  done
-fi
-if [ -z "$VIM_APP_DIR" ]; then
-  # NO MACVIM
-  export EDITOR="vim"
-  export SVN_EDITOR="vim"
-  export GIT_EDITOR='vim'
-  export GEMEDITOR="vim"
-else
-  # YES MACVIM
-  export EDITOR="mvim -f"
-  export SVN_EDITOR="mvim -f"
-  export GIT_EDITOR='mvim -f'
-  export GEMEDITOR="mvim"
-fi
+export EDITOR="vim"
+export SVN_EDITOR="vim"
+export GIT_EDITOR='vim'
+export GEMEDITOR="vim"
 
 ###############################################################################
 # ssh stuff
