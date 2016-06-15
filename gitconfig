@@ -15,6 +15,7 @@
   upm  = "!git remote update -p; git merge --ff-only @{u}"
   lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   lga  = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+  ll   = log --pretty=oneline --decorate
   # http://think-like-a-git.net/sections/graphs-and-git/visualizing-your-git-repository.html
   # lga  = log --oneline --abbrev-commit --all --graph --decorate --color
   # http://stackoverflow.com/questions/2016901/viewing-unpushed-git-commits
