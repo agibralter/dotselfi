@@ -361,6 +361,9 @@ if has('gui_running')
   set guifont=Inconsolata-g\ for\ Powerline:h12
   set background=light
 
+  " CLI-like prompts
+  set guioptions+=c
+
   set go-=T
   set go-=l
   set go-=L
