@@ -362,7 +362,7 @@ if has('gui_running')
   set background=light
 
   " CLI-like prompts
-  set guioptions+=c
+  set guioptions=ace
 
   set go-=T
   set go-=l
