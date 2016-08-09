@@ -147,7 +147,7 @@ function parse_git_branch {
   branch=${BASH_REMATCH[2]}
 
   # Dirty?
-  if [[ ! ${git_status} =~ "working directory clean" ]]; then
+  if [[ ! ${git_status} =~ "working tree clean" ]]; then
     git_is_dirty="${RED}${LIGHTNING_BOLT}"
   else
     git_is_dirty=
