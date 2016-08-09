@@ -40,6 +40,7 @@ let g:gitgutter_sign_column_always = 0
 " Don't gitgutter in realtime... too slow over ssh.
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
+let g:gitgutter_max_signs = 1000
 map <F6> :GitGutterLineHighlightsToggle<CR>
 
 " Set options for vim-session
