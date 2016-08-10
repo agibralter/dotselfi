@@ -40,7 +40,10 @@ hash brew 2>/dev/null
 if [ $? -eq 0 ]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
-    source $HOME/.bin/git-completion.bash
+
+    # Source all custom bash completions
+    for f in ~/.bin/bash-completion/*; do source $f; done
+
     # Autocomplete for 'g' alias as well.
     complete -o default -o nospace -F _git g
   fi
