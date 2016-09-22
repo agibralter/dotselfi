@@ -359,7 +359,7 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 if has('gui_running')
-  set guifont=Inconsolata-g\ for\ Powerline:h12
+  set guifont=Inconsolata-g\ for\ Powerline:h14
   set background=light
 
   " CLI-like prompts
