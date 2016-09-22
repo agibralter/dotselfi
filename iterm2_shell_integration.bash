@@ -6,7 +6,7 @@
 # will override these and if you override one or the other this _will_ break.
 
 # This is known to support bash3, as well as *mostly* support bash2.05b.  It
-# has been tested with the default shells on MacOS X 10.4 "Tiger", Ubuntu 5.10
+# has been tested with the default shells on macOS 10.4 "Tiger", Ubuntu 5.10
 # "Breezy Badger", Ubuntu 6.06 "Dapper Drake", and Ubuntu 6.10 "Edgy Eft".
 
 # tmux and screen are not supported; even using the tmux hack to get escape
@@ -241,7 +241,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
   # Usage: iterm2_set_user_var key value
   function iterm2_set_user_var() {
     iterm2_begin_osc
-    printf "1337;SetUserVar=%s=%s" "$1" $(printf "%s" "$2" | base64)
+    printf "1337;SetUserVar=%s=%s" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
     iterm2_end_osc
   }
 
@@ -275,7 +275,7 @@ if [[ "$TERM" != screen && "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" && "$-" == 
 
   function iterm2_print_version_number() {
     iterm2_begin_osc
-    printf "1337;ShellIntegrationVersion=2;shell=bash"
+    printf "1337;ShellIntegrationVersion=3;shell=bash"
     iterm2_end_osc
   }
 
