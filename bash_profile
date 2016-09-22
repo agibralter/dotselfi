@@ -80,7 +80,7 @@ alias pstreeme="pstree -aup $(whoami)"
 alias killpyc="find . -name '*.pyc' -delete"
 alias bip="bundle install --binstubs=.bundler_bin --path=vendor/bundle"
 
-alias cdd="cd $DOTSELFI"
+alias dotselfi="cd $DOTSELFI"
 
 # hub!
 hash hub 2>/dev/null
