@@ -190,6 +190,11 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 # random functions
 ###############################################################################
 
+function osx-reset-video() {
+  sudo killall VDCAssistant
+  sudo killall AppleCameraAssistant
+}
+
 function git-root() {
   root=$(git rev-parse --git-dir 2>/dev/null)
   if [[ "$root" == "" ]]; then root="."; fi
