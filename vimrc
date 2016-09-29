@@ -22,6 +22,8 @@ let g:syntastic_ruby_checkers=['mri', 'rubocop']
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_ruby_rubocop_exec = 'rubocop.sh'
 
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript']
+
 let mapleader = ","
 
 let $JS_CMD='node'
@@ -290,10 +292,10 @@ if has("autocmd")
   au Filetype html,xml,xsl,mustache source ~/.vim/bundle/closetag/plugin/closetag.vim
   au Filetype mustache inoremap <buffer> { {{}}<Left><Left>
   au bufwritepost .vimrc source $MYVIMRC " Source the vimrc file after saving it.
-  au BufNewFile,BufRead *.m*down set filetype=markdown
-  au BufNewFile,BufRead *.m*down nnoremap <leader>1 yypVr=
-  au BufNewFile,BufRead *.m*down nnoremap <leader>2 yypVr-
-  au BufNewFile,BufRead *.m*down nnoremap <leader>3 I### <ESC>
+  au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
+  au BufNewFile,BufRead *.md,*.markdown nnoremap <leader>1 yypVr=
+  au BufNewFile,BufRead *.md,*.markdown nnoremap <leader>2 yypVr-
+  au BufNewFile,BufRead *.md,*.markdown nnoremap <leader>3 I### <ESC>
   au BufRead,BufNewFile nginx.conf set ft=nginx
   au BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
   au BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
