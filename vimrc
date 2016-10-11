@@ -198,7 +198,7 @@ let NERDTreeWinSize=30
 " Set ack path
 let g:ackprg="~/.bin/ack -H --nocolor --nogroup --column"
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep --smart-case'
 endif
 
 " Quick .vimrc edit
