@@ -25,12 +25,10 @@ let g:syntastic_ruby_rubocop_exec = 'rubocop.sh'
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript']
 
 let mapleader = ","
+map <space> <leader>
+map <space><space> <leader><leader>
 
 let $JS_CMD='node'
-
-" copy path to clipboard
-nmap cp :let @+ = expand("%:p")<CR>
-set clipboard=unnamed
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -51,27 +49,27 @@ let g:session_autoload = 'no'
 let g:session_autosave = 'no'
 
 " fugitive git bindings
-nnoremap <space>ga :Git add %:p<CR><CR>
-nnoremap <space>gs :Gstatus<CR>
-nnoremap <space>gc :Gcommit -v -q<CR>
-nnoremap <space>gt :Gcommit -v -q %:p<CR>
-nnoremap <space>gd :Gdiff<CR>
-nnoremap <space>ge :Gedit<CR>
-nnoremap <space>gr :Gread<CR>
-nnoremap <space>gw :Gwrite<CR><CR>
-nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <space>gp :Ggrep<Space>
-nnoremap <space>gm :Gmove<Space>
-nnoremap <space>gb :Git branch<Space>
-nnoremap <space>go :Git checkout<Space>
-nnoremap <space>gu :Dispatch! git upm<CR>
+nnoremap <leader>ga :Git add %:p<CR><CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit -v -q<CR>
+nnoremap <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR><CR>
+nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <leader>gp :Ggrep<space>
+nnoremap <leader>gm :Gmove<space>
+nnoremap <leader>gb :Git branch<space>
+nnoremap <leader>go :Git checkout<space>
+nnoremap <leader>gu :Dispatch! git upm<CR>
 
 " same bindings for merging diffs as in normal mode
 xnoremap dp :diffput<cr>
 xnoremap do :diffget<cr>
 
 " ctrlp.vim
-let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_map = '<leader>t'
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 " Do not manage project root
 let g:ctrlp_working_path_mode = 0
@@ -84,45 +82,6 @@ let g:yankring_history_dir = '$HOME/.vim'
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-
-" Like windo but restore the current window.
-function! WinDo(command)
-  let currwin=winnr()
-  execute 'windo ' . a:command
-  execute currwin . 'wincmd w'
-endfunction
-com! -nargs=+ -complete=command Windo call WinDo(<q-args>)
-
-" Like bufdo but restore the current buffer.
-function! BufDo(command)
-  let currBuff=bufnr("%")
-  execute 'bufdo ' . a:command
-  execute 'buffer ' . currBuff
-endfunction
-com! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
-
-" Like tabdo but restore the current tab.
-function! TabDo(command)
-  let currTab=tabpagenr()
-  execute 'tabdo ' . a:command
-  execute 'tabn ' . currTab
-endfunction
-com! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
-
-" Use a default of softabs that are 2 spaces wide.
-set ts=4 sts=2 sw=2 expandtab
-let g:ajgtabsetting = 0
-" Allow toggling to 4 spaces.
-function! TabToggle()
-  if g:ajgtabsetting == 0
-    call BufDo("set ts=4 sts=4 sw=4 expandtab")
-    let g:ajgtabsetting = 1
-  else
-    call BufDo("set ts=4 sts=2 sw=2 expandtab")
-    let g:ajgtabsetting = 0
-  endif
-endfunction
-nmap <F9> mz:execute TabToggle()<CR>'z
 
 " Basic options
 set encoding=utf-8
@@ -159,14 +118,14 @@ set undodir=~/.vimtmp/undo//     " undo files
 nnoremap Y y$
 
 " Tab navigation VI-style
-nnoremap th :tabfirst<CR>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprev<CR>
-nnoremap tl :tablast<CR>
-nnoremap tn :tabnew<CR>
-nnoremap td :tabclose<CR>
-nnoremap tt :tabedit<Space>
-nnoremap tm :tabm<Space>
+nnoremap <leader>th :tabfirst<CR>
+nnoremap <leader>tj :tabnext<CR>
+nnoremap <leader>tk :tabprev<CR>
+nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>td :tabclose<CR>
+nnoremap <leader>tt :tabedit<space>
+nnoremap <leader>tm :tabm<space>
 
 " Searching
 nnoremap / /\v
@@ -177,7 +136,7 @@ set incsearch
 set showmatch
 set hlsearch
 set gdefault
-map <leader><space> :noh<CR>
+map <leader>/ :noh<CR>
 runtime macros/matchit.vim
 nmap <tab> %
 vmap <tab> %
@@ -195,6 +154,8 @@ let NERDTreeIgnore=['\~$', '.*\.pyc$', 'pip-log\.txt$']
 nnoremap <leader>rr :NERDTreeFind<CR>
 let NERDTreeWinSize=30
 
+" Ack
+map <leader>A :LAck<space>
 " Set ack path
 let g:ackprg="~/.bin/ack -H --nocolor --nogroup --column"
 if executable('ag')
@@ -228,26 +189,8 @@ noremap <C-l> <C-w>l
 noremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>af <C-^>
 
-nnoremap <D-j> j10j
-nnoremap <D-k> k10k
-
-" Folding
-" let g:ruby_fold = 1 " Ruby folding
-set foldlevelstart=99
-nnoremap <Space> za
-vnoremap <Space> za
-noremap <leader>ft Vatzf
-
-
-" Ack
-map <leader>A :LAck<Space>
-
-" ZoomWin
-nnoremap <leader>z :ZoomWin<CR>
-
 " Yankring
 nnoremap <silent> <F3> :YRShow<CR>
-nnoremap <silent> <leader>y :YRShow<CR>
 
 " Formatting, TextMate-style
 map <leader>q gqip
@@ -258,21 +201,9 @@ map <leader>v V`]
 " Paste and auto indent
 nnoremap <leader>ip pv`]=
 
-" Make selecting inside an HTML tag less dumb
-nnoremap Vit vitVkoj
-nnoremap Vat vatV
-
 " UniCycle
 nnoremap <leader>u :UniCycleOn<CR>
 nnoremap <leader>U :UniCycleOff<CR>
-
-" vim-rspec
-map <Leader>sc :call RunCurrentSpecFile()<CR>
-map <Leader>sn :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-
-" Stop it, hash key
-inoremap # X<BS>#
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -342,16 +273,6 @@ endfunction
 
 nmap <leader>bb :call CleanBuffers()<CR>
 
-function! s:ToggleNuMode()
-  if(&rnu == 1)
-    set nu
-  else
-    set rnu
-  endif
-endfunc
-
-nnoremap <leader><C-M> :call <SID>ToggleNuMode()<CR>
-
 " solarized options
 " If not using iTerm 2 with Solarized, enable the 'degraded 256 colorscheme'
 " let g:solarized_termcolors = 256
@@ -385,74 +306,30 @@ if has('gui_running')
   nnoremap <F1> :set invfullscreen<CR>
   vnoremap <F1> :set invfullscreen<CR>
 else
-    set background=dark
+  set background=dark
 endif
-
-" Show syntax highlighting groups for word under cursor
-nmap <C-S> :call SynStack()<CR>
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-
-function! s:Wipeout()
-  " list of *all* buffer numbers
-  let l:buffers = range(1, bufnr('$'))
-
-  " what tab page are we in?
-  let l:currentTab = tabpagenr()
-  try
-    " go through all tab pages
-    let l:tab = 0
-    while l:tab < tabpagenr('$')
-      let l:tab += 1
-
-      " go through all windows
-      let l:win = 0
-      while l:win < winnr('$')
-        let l:win += 1
-        " whatever buffer is in this window in this tab, remove it from
-        " l:buffers list
-        let l:thisbuf = winbufnr(l:win)
-        call remove(l:buffers, index(l:buffers, l:thisbuf))
-      endwhile
-    endwhile
-
-    " if there are any buffers left, delete them
-    if len(l:buffers)
-      execute 'bwipeout' join(l:buffers)
-    endif
-  finally
-    " go back to our original tab page
-    execute 'tabnext' l:currentTab
-  endtry
-endfunction
-nnoremap <leader>cb :call <SID>Wipeout()<CR>
 
 " Tabularize
 " Align equals signs
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
+nmap <leader>a= :Tabularize /=<CR>
+vmap <leader>a= :Tabularize /=<CR>
 
 " Align by colons left-aligned; e.g.: hello: world (with negative look-behind
 " so ruby symbols' colons don't get aligned)
-nmap <Leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
-vmap <Leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
+nmap <leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
+vmap <leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
 
 " Align by colons center-aligned; e.g.: hello : world
-nmap <Leader>ac: :Tabularize /:<CR>
-vmap <Leader>ac: :Tabularize /:<CR>
+nmap <leader>ac: :Tabularize /:<CR>
+vmap <leader>ac: :Tabularize /:<CR>
 
 " Align ruby hashrockets.
-nmap <Leader>a> :Tabularize /=><CR>
-vmap <Leader>a> :Tabularize /=><CR>
+nmap <leader>a> :Tabularize /=><CR>
+vmap <leader>a> :Tabularize /=><CR>
 
 " Align comma tables.
-nmap <Leader>a, :Tabularize /,\zs/l1l0<CR>
-vmap <Leader>a, :Tabularize /,\zs/l1l0<CR>
+nmap <leader>a, :Tabularize /,\zs/l1l0<CR>
+vmap <leader>a, :Tabularize /,\zs/l1l0<CR>
 
 " Gundo
 nnoremap U :GundoToggle<CR>
@@ -463,160 +340,9 @@ let g:gundo_preview_bottom = 1
 let g:NERDSpaceDelims = 1
 
 " Location list
-nmap <Leader>> :lnext<CR>
-nmap <Leader>< :lprevious<CR>
+nmap <leader>> :lnext<CR>
+nmap <leader>< :lprevious<CR>
 
 " Scrollbind
-nmap <Leader>sb :set scrollbind<CR>
-nmap <Leader>nb :set noscrollbind<CR>
-
-" Next
-nnoremap cinb f(ci(
-nnoremap canb f(ca(
-nnoremap cinB f{ci{
-nnoremap canB f{ca{
-nnoremap cin( f(ci(
-nnoremap can( f(ca(
-nnoremap cin{ f{ci{
-nnoremap can{ f{ca{
-nnoremap cin) f(ci(
-nnoremap can) f(ca(
-nnoremap cin} f{ci{
-nnoremap can} f{ca{
-nnoremap cin[ f[ci[
-nnoremap can[ f[ca[
-nnoremap cin] f[ci[
-nnoremap can] f[ca[
-nnoremap cin< f<ci<
-nnoremap can< f<ca<
-nnoremap cin> f<ci<
-nnoremap can> f<ca<
-nnoremap cin' f'ci'
-nnoremap can' f'ca'
-nnoremap cin" f"ci"
-nnoremap can" f"ca"
-
-nnoremap dinb f(di(
-nnoremap danb f(da(
-nnoremap dinB f{di{
-nnoremap danB f{da{
-nnoremap din( f(di(
-nnoremap dan( f(da(
-nnoremap din{ f{di{
-nnoremap dan{ f{da{
-nnoremap din) f(di(
-nnoremap dan) f(da(
-nnoremap din} f{di{
-nnoremap dan} f{da{
-nnoremap din[ f[di[
-nnoremap dan[ f[da[
-nnoremap din] f[di[
-nnoremap dan] f[da[
-nnoremap din< f<di<
-nnoremap dan< f<da<
-nnoremap din> f<di<
-nnoremap dan> f<da<
-nnoremap din' f'di'
-nnoremap dan' f'da'
-nnoremap din" f"di"
-nnoremap dan" f"da"
-
-nnoremap yinb f(yi(
-nnoremap yanb f(ya(
-nnoremap yinB f{yi{
-nnoremap yanB f{ya{
-nnoremap yin( f(yi(
-nnoremap yan( f(ya(
-nnoremap yin{ f{yi{
-nnoremap yan{ f{ya{
-nnoremap yin) f(yi(
-nnoremap yan) f(ya(
-nnoremap yin} f{yi{
-nnoremap yan} f{ya{
-nnoremap yin[ f[yi[
-nnoremap yan[ f[ya[
-nnoremap yin] f[yi[
-nnoremap yan] f[ya[
-nnoremap yin< f<yi<
-nnoremap yan< f<ya<
-nnoremap yin> f<yi<
-nnoremap yan> f<ya<
-nnoremap yin' f'yi'
-nnoremap yan' f'ya'
-nnoremap yin" f"yi"
-nnoremap yan" f"ya"
-
-nnoremap ciNb F(ci(
-nnoremap caNb F(ca(
-nnoremap ciNB F{ci{
-nnoremap caNB F{ca{
-nnoremap ciN( F(ci(
-nnoremap caN( F(ca(
-nnoremap ciN{ F{ci{
-nnoremap caN{ F{ca{
-nnoremap ciN) F(ci(
-nnoremap caN) F(ca(
-nnoremap ciN} F{ci{
-nnoremap caN} F{ca{
-nnoremap ciN[ F[ci[
-nnoremap caN[ F[ca[
-nnoremap ciN] F[ci[
-nnoremap caN] F[ca[
-nnoremap ciN< F<ci<
-nnoremap caN< F<ca<
-nnoremap ciN> F<ci<
-nnoremap caN> F<ca<
-nnoremap ciN' F'ci'
-nnoremap caN' F'ca'
-nnoremap ciN" F"ci"
-nnoremap caN" F"ca"
-
-nnoremap diNb F(di(
-nnoremap daNb F(da(
-nnoremap diNB F{di{
-nnoremap daNB F{da{
-nnoremap diN( F(di(
-nnoremap daN( F(da(
-nnoremap diN{ F{di{
-nnoremap daN{ F{da{
-nnoremap diN) F(di(
-nnoremap daN) F(da(
-nnoremap diN} F{di{
-nnoremap daN} F{da{
-nnoremap diN[ F[di[
-nnoremap daN[ F[da[
-nnoremap diN] F[di[
-nnoremap daN] F[da[
-nnoremap diN< F<di<
-nnoremap daN< F<da<
-nnoremap diN> F<di<
-nnoremap daN> F<da<
-nnoremap diN' F'di'
-nnoremap daN' F'da'
-nnoremap diN" F"di"
-nnoremap daN" F"da"
-
-nnoremap yiNb F(yi(
-nnoremap yaNb F(ya(
-nnoremap yiNB F{yi{
-nnoremap yaNB F{ya{
-nnoremap yiN( F(yi(
-nnoremap yaN( F(ya(
-nnoremap yiN{ F{yi{
-nnoremap yaN{ F{ya{
-nnoremap yiN) F(yi(
-nnoremap yaN) F(ya(
-nnoremap yiN} F{yi{
-nnoremap yaN} F{ya{
-nnoremap yiN[ F[yi[
-nnoremap yaN[ F[ya[
-nnoremap yiN] F[yi[
-nnoremap yaN] F[ya[
-nnoremap yiN< F<yi<
-nnoremap yaN< F<ya<
-nnoremap yiN> F<yi<
-nnoremap yaN> F<ya<
-nnoremap yiN' F'yi'
-nnoremap yaN' F'ya'
-nnoremap yiN" F"yi"
-nnoremap yaN" F"ya"
+nmap <leader>sb :set scrollbind<CR>
+nmap <leader>nb :set noscrollbind<CR>
