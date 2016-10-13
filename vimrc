@@ -1,3 +1,8 @@
+" {{{ Plugins
+source ~/.vim/include/plug.vim
+source ~/.vim/include/plug-options.vim
+" }}}
+
 " Prevent output in terminal
 let &shellpipe="&>"
 
@@ -11,18 +16,6 @@ syntax enable
 filetype on
 filetype plugin indent on
 compiler ruby
-call pathogen#infect()
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_jump = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers=['mri', 'rubocop']
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_ruby_rubocop_exec = 'rubocop.sh'
-
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript']
 
 let mapleader = ","
 map <space> <leader>
@@ -30,77 +23,31 @@ map <space><space> <leader><leader>
 
 let $JS_CMD='node'
 
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#syntastic#enabled = 1
-
-" gitgutter options
-let g:gitgutter_highlight_lines = 0
-let g:gitgutter_sign_column_always = 0
-" Don't gitgutter in realtime... too slow over ssh.
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 1
-let g:gitgutter_max_signs = 1000
-map <F6> :GitGutterLineHighlightsToggle<CR>
-
-" Set options for vim-session
-let g:session_directory = '~/.vimtmp/sessions'
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
-
-" fugitive git bindings
-nnoremap <leader>ga :Git add %:p<CR><CR>
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit -v -q<CR>
-nnoremap <leader>gt :Gcommit -v -q %:p<CR>
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>ge :Gedit<CR>
-nnoremap <leader>gr :Gread<CR>
-nnoremap <leader>gw :Gwrite<CR><CR>
-nnoremap <leader>gl :silent! Glog<CR>:bot copen<CR>
-nnoremap <leader>gp :Ggrep<space>
-nnoremap <leader>gm :Gmove<space>
-nnoremap <leader>gb :Git branch<space>
-nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gu :Dispatch! git upm<CR>
-
-" same bindings for merging diffs as in normal mode
-xnoremap dp :diffput<cr>
-xnoremap do :diffget<cr>
-
-" ctrlp.vim
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-" Do not manage project root
-let g:ctrlp_working_path_mode = 0
-" only jump to the buffer if it is opened in the current tab
-let g:ctrlp_jump_to_buffer = 1
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|tmp$\|log$'
-
-" Not $HOME...
-let g:yankring_history_dir = '$HOME/.vim'
+" Move lines up and down
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
-
 " Basic options
+
 set encoding=utf-8
-set list                              " Show hidden chars
-set listchars=tab:▸\ ,eol:¬           " Use the same symbols as TextMate for tabstops and EOLs
+set list " show hidden chars
+set listchars=tab:▸\ ,eol:¬ " change invisible characters
 set smartindent
 set ruler
 set showmatch
 set showmode
 set showcmd
 set autoindent
-set backspace=indent,eol,start        " sane backspace behavior
+set backspace=indent,eol,start " sane backspace behavior
 set hidden
 " In vim 7.4+ these work at the same time...
 set relativenumber
 set number
 set scrolloff=3
-set wildmenu
 set wildmode=list:longest
+set wildmenu
 set wildignore=*.o,*~,*.pyc
 set visualbell
 set cursorline
@@ -137,7 +84,6 @@ set showmatch
 set hlsearch
 set gdefault
 map <leader>/ :noh<CR>
-runtime macros/matchit.vim
 nmap <tab> %
 vmap <tab> %
 
@@ -146,21 +92,6 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=79
-
-" NERD Tree
-map <leader><F2> :NERDTree<CR>
-map <F2> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\~$', '.*\.pyc$', 'pip-log\.txt$']
-nnoremap <leader>rr :NERDTreeFind<CR>
-let NERDTreeWinSize=30
-
-" Ack
-map <leader>A :LAck<space>
-" Set ack path
-let g:ackprg="~/.bin/ack -H --nocolor --nogroup --column"
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --smart-case'
-endif
 
 " Quick .vimrc edit
 nmap <leader>ev :tabedit $MYVIMRC<CR>
@@ -174,7 +105,7 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
-" And make them fucking work, too.
+" And make them work, too.
 nnoremap j gj
 nnoremap k gk
 
@@ -189,9 +120,6 @@ noremap <C-l> <C-w>l
 noremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>af <C-^>
 
-" Yankring
-nnoremap <silent> <F3> :YRShow<CR>
-
 " Formatting, TextMate-style
 map <leader>q gqip
 
@@ -201,13 +129,33 @@ map <leader>v V`]
 " Paste and auto indent
 nnoremap <leader>ip pv`]=
 
-" UniCycle
-nnoremap <leader>u :UniCycleOn<CR>
-nnoremap <leader>U :UniCycleOff<CR>
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 
-" tagbar
-nmap <F8> :TagbarToggle<CR>
-nmap <F9> :TagbarOpen fjc<CR>
+" Clean all trailing whitespace
+nmap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
+" Clean all trailing whitespace on lines with non-whitespace
+nmap _$ :call Preserve("%s/\\(\\S\\)\\s\\+$/\\1/e")<CR>
+" Auto-indent file.
+nmap _= :call Preserve("normal gg=G")<CR>
+
+function! CleanBuffers()
+  execute ":bufdo bd"
+  execute ":tabnew"
+  execute ":tabfirst"
+  execute ":tabclose"
+endfunction
+
+nmap <leader>bb :call CleanBuffers()<CR>
 
 if has("autocmd")
   augroup defaults
@@ -220,7 +168,6 @@ if has("autocmd")
   au BufNewFile,BufRead *.js set syntax=jquery
   au BufNewFile,BufRead Gemfile,Guardfile set filetype=ruby syntax=ruby
   au BufNewFile,BufRead *.ru set filetype=ruby syntax=ruby
-  au Filetype html,xml,xsl,mustache source ~/.vim/bundle/closetag/plugin/closetag.vim
   au Filetype mustache inoremap <buffer> { {{}}<Left><Left>
   au bufwritepost .vimrc source $MYVIMRC " Source the vimrc file after saving it.
   au BufNewFile,BufRead *.md,*.markdown setlocal filetype=markdown
@@ -243,44 +190,6 @@ if has("autocmd")
   augroup END
 end
 
-function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-runtime macros/matchit.vim
-
-" Clean all trailing whitespace
-nmap <leader>W :call Preserve("%s/\\s\\+$//e")<CR>
-" Clean all trailing whitespace on lines with non-whitespace
-nmap _$ :call Preserve("%s/\\(\\S\\)\\s\\+$/\\1/e")<CR>
-" Auto-indent file.
-nmap _= :call Preserve("normal gg=G")<CR>
-
-function! CleanBuffers()
-  execute ":bufdo bd"
-  execute ":tabnew"
-  execute ":tabfirst"
-  execute ":tabclose"
-endfunction
-
-nmap <leader>bb :call CleanBuffers()<CR>
-
-" solarized options
-" If not using iTerm 2 with Solarized, enable the 'degraded 256 colorscheme'
-" let g:solarized_termcolors = 256
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-colorscheme solarized
-call togglebg#map("<F5>")
-
 if has('gui_running')
   set guifont=Inconsolata-g\ for\ Powerline:h14
   set background=light
@@ -294,13 +203,11 @@ if has('gui_running')
   set go-=r
   set go-=R
 
-  let g:sparkupExecuteMapping = '<D-e>'
-
   highlight SpellBad term=underline gui=undercurl guisp=Orange
 
   " set title titlestring=%<%F%=%l/%L-%P titlelen=70
 
-  " Fuck you, help key.
+  " Fix help key
   set fuoptions=maxvert,maxhorz
   inoremap <F1> <ESC>:set invfullscreen<CR>a
   nnoremap <F1> :set invfullscreen<CR>
@@ -309,36 +216,6 @@ else
   set background=dark
 endif
 
-" Tabularize
-" Align equals signs
-nmap <leader>a= :Tabularize /=<CR>
-vmap <leader>a= :Tabularize /=<CR>
-
-" Align by colons left-aligned; e.g.: hello: world (with negative look-behind
-" so ruby symbols' colons don't get aligned)
-nmap <leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
-vmap <leader>al: :Tabularize /\s\@<!:\zs/l1l0<CR>
-
-" Align by colons center-aligned; e.g.: hello : world
-nmap <leader>ac: :Tabularize /:<CR>
-vmap <leader>ac: :Tabularize /:<CR>
-
-" Align ruby hashrockets.
-nmap <leader>a> :Tabularize /=><CR>
-vmap <leader>a> :Tabularize /=><CR>
-
-" Align comma tables.
-nmap <leader>a, :Tabularize /,\zs/l1l0<CR>
-vmap <leader>a, :Tabularize /,\zs/l1l0<CR>
-
-" Gundo
-nnoremap U :GundoToggle<CR>
-let g:gundo_debug = 1
-let g:gundo_preview_bottom = 1
-
-" NERDCommenter adjustments
-let g:NERDSpaceDelims = 1
-
 " Location list
 nmap <leader>> :lnext<CR>
 nmap <leader>< :lprevious<CR>
@@ -346,3 +223,5 @@ nmap <leader>< :lprevious<CR>
 " Scrollbind
 nmap <leader>sb :set scrollbind<CR>
 nmap <leader>nb :set noscrollbind<CR>
+
+" vim:tw=0:ts=4:sw=4:noet:nolist:foldmethod=marker
