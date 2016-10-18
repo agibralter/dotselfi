@@ -47,6 +47,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Gundo'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/closetag.vim'
+Plug 'Townk/vim-autoclose'
 
 call plug#end()
 
