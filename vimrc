@@ -30,28 +30,19 @@ nnoremap <leader>k :m .-2<CR>==
 nmap <leader>l :set list!<CR>
 " Basic options
 
-set encoding=utf-8
-set list " show hidden chars
-set listchars=tab:▸\ ,eol:¬ " change invisible characters
 set smartindent
-set ruler
 set showmatch
 set showmode
 set showcmd
-set autoindent
-set backspace=indent,eol,start " sane backspace behavior
 set hidden
 " In vim 7.4+ these work at the same time...
 set relativenumber
 set number
-set scrolloff=3
 set wildmode=list:longest
-set wildmenu
 set wildignore=*.o,*~,*.pyc
 set visualbell
 set cursorline
 set ttyfast
-set laststatus=2
 set undofile
 set undoreload=10000
 
@@ -78,7 +69,6 @@ nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set incsearch
 set showmatch
 set hlsearch
 set gdefault
@@ -89,7 +79,7 @@ vmap <tab> %
 " Soft/hard wrapping
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+set formatoptions+=qrn1
 set colorcolumn=79
 
 " Quick .vimrc edit
