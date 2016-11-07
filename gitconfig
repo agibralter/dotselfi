@@ -39,6 +39,7 @@
   lsc  = "!f() { (git ls-files -m ; git log $1 --name-only --no-color --pretty=format:) | sort | uniq | grep -v '^$'; }; f"
   pfwl = push --force-with-lease
   pot  = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
+  pr   = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
 [push]
   default = simple
