@@ -22,6 +22,9 @@ source ~/.vim/include/plug.vim
 source ~/.vim/include/plug-options.vim
 " }}}
 
+
+nnoremap <leader>V :so $MYVIMRC<CR>
+
 " Move lines up and down
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
