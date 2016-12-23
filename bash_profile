@@ -49,14 +49,6 @@ if [ $? -eq 0 ]; then
   fi
 fi
 
-# bcat!
-hash bcat 2>/dev/null
-if [ $? -eq 0 ]; then
-  export MANPAGER="col -b | bcat"
-  export GIT_PAGER="bcat"
-fi
-
-
 # virtualenvwrapper!
 hash virtualenvwrapper.sh 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -81,12 +73,6 @@ alias killpyc="find . -name '*.pyc' -delete"
 alias bip="bundle install --binstubs=.bundler_bin --path=vendor/bundle"
 
 alias dotselfi="cd $DOTSELFI"
-
-# hub!
-hash hub 2>/dev/null
-if [ $? -eq 0 ]; then
-  alias git=hub
-fi
 
 # ctags!
 hash ctags 2>/dev/null
