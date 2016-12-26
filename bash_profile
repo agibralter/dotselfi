@@ -176,6 +176,17 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 # random functions
 ###############################################################################
 
+function docker-nuke() {
+  docker ps -q | xargs docker stop
+  docker ps -qa | xargs docker rm
+  docker volume ls -q | xargs docker volume rm
+}
+
+function docker-super-nuke() {
+  docker-nuke
+  docker images list -q | xargs docker rmi
+}
+
 function osx-reset-video() {
   sudo killall VDCAssistant
   sudo killall AppleCameraAssistant
