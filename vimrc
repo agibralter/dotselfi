@@ -34,6 +34,7 @@ nmap <leader>l :set list!<CR>
 " Basic options
 
 set smartindent
+set expandtab ts=4 sw=4 ai
 set showmatch
 set showmode
 set showcmd
