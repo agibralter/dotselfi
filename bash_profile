@@ -215,3 +215,9 @@ hash direnv 2>/dev/null
 if [ $? -eq 0 ]; then
   eval "$(direnv hook bash)"
 fi
+
+if [[ -e "/usr/local/opt/nvm/nvm.sh" ]]; then
+  export NVM_DIR="$HOME/.nvm"
+  mkdir -p $NVM_DIR
+  . "/usr/local/opt/nvm/nvm.sh"
+fi
