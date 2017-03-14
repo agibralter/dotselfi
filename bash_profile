@@ -176,6 +176,10 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 # random functions
 ###############################################################################
 
+function imdone() {
+  terminal-notifier -sound default -message 'DONE!'
+}
+
 function docker-nuke() {
   docker ps -q | xargs docker stop
   docker ps -qa | xargs docker rm
