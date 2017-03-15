@@ -225,3 +225,6 @@ if [[ -e "/usr/local/opt/nvm/nvm.sh" ]]; then
   mkdir -p $NVM_DIR
   . "/usr/local/opt/nvm/nvm.sh"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'

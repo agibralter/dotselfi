@@ -24,6 +24,8 @@ Dotfiles. New and improved.
 * `the_silver_searcher` [link](https://github.com/ggreer/the_silver_searcher)
 * `cmake` (for YouCompleteMe Vim bundle)
 * `direnv` [link](https://github.com/direnv/direnv)
+* `fzf` [link](https://github.com/junegunn/fzf)
+* `rg` [link](https://github.com/BurntSushi/ripgrep)
 
 ## other important brews
 * `rbenv`
