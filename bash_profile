@@ -177,7 +177,18 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 ###############################################################################
 
 function imdone() {
-  terminal-notifier -sound default -message 'DONE!'
+  if [[ "$#" == 0 ]]; then
+    terminal-notifier -sound default -message "Done!"
+  else
+    "$@"
+
+    args=''
+    for i in "$@"; do
+      args="$args ${i//\"/\\\"}"
+    done
+    
+    terminal-notifier -sound default -message "Done running: $args"
+  fi
 }
 
 function docker-nuke() {
