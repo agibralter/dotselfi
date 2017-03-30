@@ -176,6 +176,10 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 # random functions
 ###############################################################################
 
+function bbb() {
+  brew update; brew upgrade; brew cleanup
+}
+
 function imdone() {
   if [[ "$#" == 0 ]]; then
     terminal-notifier -sound default -message "Done!"
