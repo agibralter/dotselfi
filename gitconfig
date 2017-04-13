@@ -28,6 +28,7 @@
   a    = add
   s    = status
   st   = status
+  su   = status -uall
   bl   = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
   b    = branch -vv --color
   ba   = branch -vv --color -a
@@ -41,6 +42,8 @@
   pfwl = push --force-with-lease
   pot  = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
   pr   = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+
+  stash-all = stash save --include-untracked
 
 [push]
   default = simple
