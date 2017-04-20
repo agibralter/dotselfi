@@ -50,6 +50,13 @@ set ttyfast
 set undofile
 set undoreload=10000
 
+" Folding
+set foldenable
+set foldmethod=indent
+set foldlevelstart=10
+set foldnestmax=10
+nnoremap <space> za
+
 " Backups (use // so that vim uses full paths for backup names)
 set backupdir=~/.vimtmp/backup// " backups
 set directory=~/.vimtmp/swap//   " swap files
