@@ -24,7 +24,6 @@
   co   = checkout
   cob  = checkout -b
   cot  = checkout -t
-  cong = checkout --no-guess
   cm   = commit
   a    = add
   s    = status
