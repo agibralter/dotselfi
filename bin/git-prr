@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+reviewing_prefix=🔎
+base_branch=${1:-}
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# Are we currently reviewing a PR?
+[[ $current_branch =~ ^$reviewing_prefix ]]
+reviewing=$?
+
+run() {
+    if [[ $reviewing == 0 && $base_branch ]]; then
+        echo "You are currently reviewing a PR. Reset by not passing an argument"
+        exit 1
+    elif [[ $reviewing == 0 && !$base_branch ]]; then
+        echo "Resetting..."
+        stop_review
+    elif [[ $reviewing == 1 && $base_branch ]]; then
+        echo "Reviewing PR of $current_branch into $base_branch"
+        start_review
+    else
+        echo "Please specify a base branch"
+        exit 1
+    fi
+
+    exit 0
+}
+
+stop_review() {
+    echo "Are you sure you want to reset this PR review?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) reset_branch; break;;
+            No ) exit;;
+        esac
+    done
+}
+
+reset_branch() {
+    branch="$(echo $current_branch | perl -pe "s/$reviewing_prefix//g")"
+    git checkout $branch
+    git branch -D $current_branch
+}
+
+start_review() {
+    base_sha="$(git merge-base HEAD $base_branch 2>/dev/null || true)"
+    if [[ $base_sha != "" ]]; then
+        git checkout -b $reviewing_prefix$current_branch
+        git reset $base_sha -q
+        git add .
+    else
+        echo "Cannot find merge base of $current_branch and $base_branch."
+        exit 1
+    fi
+}
+
+run
