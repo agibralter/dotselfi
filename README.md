@@ -11,6 +11,11 @@ Dotfiles. New and improved.
 2. Run `./install-dotfiles.sh`.
 3. `cd vim/bundles/YouCompleteMe; ./install.py --clang-completer
    --gocode-completer`.
+4. Check out [alacritty](https://github.com/jwilm/alacritty) and set the
+   ALACRITTY_PATH env var in ~/.bash_extras:
+   ```
+   export ALACRITTY_PATH="/path/to/alacritty"
+   ```
 
 ## important brew deps for dotselfi
 * `bash-completion`
@@ -26,6 +31,7 @@ Dotfiles. New and improved.
 * `direnv` [link](https://github.com/direnv/direnv)
 * `fzf` [link](https://github.com/junegunn/fzf)
 * `rg` [link](https://github.com/BurntSushi/ripgrep)
+* `pick` [link](https://github.com/calleerlandsson/pick)
 
 ## other important brews
 * `rbenv`
@@ -37,6 +43,7 @@ Dotfiles. New and improved.
 ## other things to install/setup
 * `npm install -g jshint`
 * [Powerline fonts](https://github.com/powerline/fonts) for vim-airline.
+* [rustup](https://rustup.rs/): `curl https://sh.rustup.rs -sSf | sh`
 
 ## notes
 

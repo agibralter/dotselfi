@@ -44,6 +44,7 @@ relink tmuxifier
 relink vim
 
 relink ackrc
+relink alacritty.yml
 relink bash_profile
 relink bashrc
 relink gemrc

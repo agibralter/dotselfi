@@ -35,6 +35,11 @@ if [ $? -eq 0 ]; then
   eval "$(tmuxifier init -)"
 fi
 
+# Set up alacritty
+if [[ -d $ALACRITTY_PATH ]]; then
+  export PATH="$ALACRITTY_PATH:$PATH"
+fi
+
 # Tab Completions
 hash brew 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -71,6 +76,14 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias pstreeme="pstree -aup $(whoami)"
 alias killpyc="find . -name '*.pyc' -delete"
 alias bip="bundle install --binstubs=.bundler_bin --path=vendor/bundle"
+
+# pick!
+hash pick 2>/dev/null
+if [ $? -eq 0 ]; then
+  pickcd() { cd $(find . -type d | pick) ; }
+  pickkill() { kill $(ps -e | awk '{if(NR!=1) { print $4, $1 }}' | pick -do | tail -n +2) ; }
+  pickhist() { $(history | cut -c8- | sort -u | pick) ; }
+fi
 
 alias dotselfi="cd $DOTSELFI"
 
@@ -243,3 +256,5 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+export PATH="$HOME/.cargo/bin:$PATH"

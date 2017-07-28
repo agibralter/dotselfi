@@ -24,6 +24,7 @@
   co   = checkout
   cob  = checkout -b
   cot  = checkout -t
+  cop  = "!git checkout $(git branch | cut -c 3- | pick)"
   cm   = commit
   a    = add
   s    = status
