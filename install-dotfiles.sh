@@ -55,6 +55,7 @@ relink irbrc
 relink iterm2_shell_integration.bash
 relink jslintrc
 relink rdebugrc
+relink rubocop.yml
 relink rvmrc
 relink tmux.conf
 relink vimrc
