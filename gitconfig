@@ -30,7 +30,7 @@
   s    = status
   st   = status
   su   = status -uall
-  bl   = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+  bl   = "!git branch --sort=committerdate --format='%(HEAD)|%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:magenta)%(authorname)|%(color:blue)%(subject)%(color:reset)' | column -ts'|'"
   b    = branch -vv --color
   ba   = branch -vv --color -a
   bm   = branch -vv --color --merged
