@@ -765,9 +765,6 @@ Lint/StringConversionInInterpolation:
   Description: Checks for Object#to_s usage in string interpolation.
   Enabled: true
   StyleGuide: "#no-to-s"
-Lint/Syntax:
-  Description: Checks syntax error
-  Enabled: true
 Lint/UnderscorePrefixedVariableName:
   Description: Do not use prefix `_` for a variable that is used.
   Enabled: true
