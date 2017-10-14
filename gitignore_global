@@ -6,3 +6,5 @@ tags.temp
 .agignore
 .envrc
 .bundler_bin
+*.iml
+vendor/cache/**/Gemfile.lock
