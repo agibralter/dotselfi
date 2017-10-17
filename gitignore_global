@@ -8,3 +8,4 @@ tags.temp
 .bundler_bin
 *.iml
 vendor/cache/**/Gemfile.lock
+vendor/cache/**/.rakeTasks
