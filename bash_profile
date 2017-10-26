@@ -29,6 +29,11 @@ if [ $? -eq 0 ]; then
   eval "$(rbenv init -)"
 fi
 
+# Set up pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Set up tmuxifier.
 hash tmuxifier 2>/dev/null
 if [ $? -eq 0 ]; then
