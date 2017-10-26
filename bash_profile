@@ -34,6 +34,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# And pyenv-virtualenv
+if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
 # Set up tmuxifier.
 hash tmuxifier 2>/dev/null
 if [ $? -eq 0 ]; then
@@ -57,12 +62,6 @@ if [ $? -eq 0 ]; then
     # Autocomplete for 'g' alias as well.
     complete -o default -o nospace -F _git g
   fi
-fi
-
-# virtualenvwrapper!
-hash virtualenvwrapper.sh 2>/dev/null
-if [ $? -eq 0 ]; then
-  source `command -v virtualenvwrapper.sh`
 fi
 
 ###############################################################################
