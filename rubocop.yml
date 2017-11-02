@@ -281,7 +281,7 @@ Layout/FirstMethodParameterLineBreak:
   Enabled: false
 Layout/FirstParameterIndentation:
   Description: Checks the indentation of the first parameter in a method call.
-  Enabled: true
+  Enabled: false
   EnforcedStyle: special_for_inner_method_call_in_parentheses
   IndentationWidth:
   SupportedStyles:
