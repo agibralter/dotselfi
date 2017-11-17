@@ -39,6 +39,7 @@ Dotfiles. New and improved.
 * `postgres`
 * `nginx`
 * `redis`
+* `pyenv`
 
 ## other things to install/setup
 * `npm install -g jshint`
