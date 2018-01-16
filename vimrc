@@ -193,7 +193,7 @@ if has("autocmd")
 end
 
 if has('gui_running')
-	set guifont=Inconsolata-g\ for\ Powerline:h12
+	set guifont=Inconsolata\ for\ Powerline:h12
 	set background=light
 
 	" CLI-like prompts
