@@ -7,9 +7,9 @@ set diffopt+=vertical
 
 set showtabline=2 " Always show tab bar
 set nocompatible " We're running Vim, not Vi!
-syntax enable
 filetype on
 filetype plugin indent on
+syntax enable
 compiler ruby
 
 set pastetoggle=<F4>

@@ -1,6 +1,7 @@
 let g:plug_timeout = 120
 call plug#begin('~/.vim/plugged')
 
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'SirVer/ultisnips'
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Code completion
@@ -10,12 +11,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bronson/vim-visual-star-search'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'chrisbra/csv.vim'
 Plug 'duff/vim-bufonly'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'godlygeek/tabular'
 Plug 'hail2u/vim-css3-syntax'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-user'
@@ -28,8 +29,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'nono/vim-handlebars'
 Plug 'nvie/vim-flake8'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
@@ -51,6 +50,9 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Gundo'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/closetag.vim'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
 
