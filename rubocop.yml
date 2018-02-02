@@ -683,10 +683,6 @@ Lint/InheritException:
   SupportedStyles:
   - runtime_error
   - standard_error
-Lint/InvalidCharacterLiteral:
-  Description: Checks for invalid character literals with a non-escaped whitespace
-    character.
-  Enabled: true
 Lint/LiteralInCondition:
   Description: Checks of literals used in conditions.
   Enabled: true
@@ -736,7 +732,7 @@ Lint/RescueException:
 Lint/RescueType:
   Description: Avoid rescuing from non constants that could result in a `TypeError`.
   Enabled: true
-Lint/RescueWithoutErrorClass:
+Style/RescueStandardError:
   Description: Avoid rescuing without specifying an error class.
   Enabled: true
   StyleGuide: "#no-blind-rescues"
@@ -1552,15 +1548,9 @@ Style/EmptyMethod:
   - compact
   - expanded
 Style/Encoding:
-  AutoCorrectEncodingComment: "# encoding: utf-8"
   Description: Use UTF-8 as the source file encoding.
   Enabled: false
-  EnforcedStyle: when_needed
   StyleGuide: "#utf-8"
-  SupportedStyles:
-  - always
-  - never
-  - when_needed
 Style/EndBlock:
   Description: Avoid the use of END blocks.
   Enabled: true
@@ -1643,7 +1633,6 @@ Style/IfInsideElse:
 Style/IfUnlessModifier:
   Description: Favor modifier if/unless usage when you have a single-line body.
   Enabled: true
-  MaxLineLength: 80
   StyleGuide: "#if-as-a-modifier"
 Style/IfUnlessModifierOfIfUnless:
   Description: Avoid modifier if/unless usage on conditionals.
@@ -2171,7 +2160,6 @@ Style/WhileUntilDo:
 Style/WhileUntilModifier:
   Description: Favor modifier while/until usage when you have a single-line body.
   Enabled: false
-  MaxLineLength: 80
   StyleGuide: "#while-as-a-modifier"
 Style/WordArray:
   Description: Use %w or %W for arrays of words.
