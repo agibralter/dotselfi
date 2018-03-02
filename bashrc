@@ -38,17 +38,16 @@ export GEMEDITOR="vim"
 # ssh stuff
 ###############################################################################
 SOCK="/tmp/ssh-agent-$USER-screen"
-if test $SSH_AUTH_SOCK && [ $SSH_AUTH_SOCK != $SOCK ]
-then
-  rm -f /tmp/ssh-agent-$USER-screen
-  ln -sf $SSH_AUTH_SOCK $SOCK
+if test "$SSH_AUTH_SOCK" && [ "$SSH_AUTH_SOCK" != "$SOCK" ]; then
+  rm -f "/tmp/ssh-agent-$USER-screen"
+  ln -sf "$SSH_AUTH_SOCK" "$SOCK"
   export SSH_AUTH_SOCK=$SOCK
 fi
 
 ssh-reagent () {
   for agent in /tmp/ssh-*/agent.*; do
     export SSH_AUTH_SOCK=$agent
-    if ssh-add -l 2>&1 > /dev/null; then
+    if ssh-add -l >/dev/null 2>&1; then
       echo Found working SSH Agent:
       ssh-add -l
       return
