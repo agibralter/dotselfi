@@ -1,5 +1,7 @@
 # vim: ft=sh
 
+export PATH="/usr/local/sbin:$PATH"
+
 # Add RVM to PATH
 if [ -d "$HOME/.rvm/bin" ]; then
   export PATH="$HOME/.rvm/bin:$PATH"
