@@ -33,6 +33,8 @@ fi
 
 # Set up pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
+  PYTHON_CONFIGURE_OPTS="--enable-framework"
+  export PYTHON_CONFIGURE_OPTS
   eval "$(pyenv init -)"
 fi
 
