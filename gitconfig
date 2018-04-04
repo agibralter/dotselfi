@@ -48,6 +48,8 @@
 
   stash-all = stash save --include-untracked
 
+  prune-merged = "!f() { git fetch -p origin; git push --delete origin $(git branch -r --merged | grep -v master | sed 's/origin\\///' | awk '{$1=$1};1' | tr '\\n' ' '); }; f"
+
 [push]
   default = simple
 
