@@ -1,4 +1,4 @@
-# vim: ft=sh
+#!/bin/bash
 
 export PATH="/usr/local/sbin:$PATH"
 
