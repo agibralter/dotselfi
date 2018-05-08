@@ -56,12 +56,10 @@ fi
 # Tab Completions
 if hash brew 2>/dev/null; then
   if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    # shellcheck disable=SC1090
-    . "$(brew --prefix)/etc/bash_completion"
-
     # Source all custom bash completions
     # shellcheck disable=SC1090
     . "$(brew --prefix)/etc/bash_completion"
+
     # shellcheck disable=SC1090
     for f in ~/.bin/bash-completion/*; do source "$f"; done
 
@@ -279,8 +277,6 @@ if [[ -e "/usr/local/opt/nvm/nvm.sh" ]]; then
   mkdir -p "$NVM_DIR"
   # shellcheck disable=SC1091
   source "/usr/local/opt/nvm/nvm.sh"
-  # shellcheck disable=SC1090
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 fi
 
 # shellcheck disable=SC1090
