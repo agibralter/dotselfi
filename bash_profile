@@ -264,13 +264,9 @@ function pgrep() {
   find . -maxdepth 1 -mindepth 1| grep -Ev "$exclude" | xargs grep -Elir "$1" | grep -Ev "$exclude" | xargs grep -EHin --color "$1"
 }
 
+# TODO: Does not work with direnv...
 # shellcheck disable=SC1090
-source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
-
-# Set up direnv (must be last thing that modifies prompt).
-if hash direnv 2>/dev/null; then
-  eval "$(direnv hook bash)"
-fi
+# source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
 
 if [[ -e "/usr/local/opt/nvm/nvm.sh" ]]; then
   export NVM_DIR="$HOME/.nvm"
@@ -287,4 +283,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 GPG_TTY="$(tty)"
 export GPG_TTY
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# Set up direnv (must be last thing that modifies prompt).
+if hash direnv 2>/dev/null; then
+  eval "$(direnv hook bash)"
+fi

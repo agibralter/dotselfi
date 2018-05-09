@@ -45,7 +45,6 @@ Dotfiles. New and improved.
 * `npm install -g jshint`
 * [Powerline fonts](https://github.com/powerline/fonts) for vim-airline.
 * [rustup](https://rustup.rs/): `curl https://sh.rustup.rs -sSf | sh`
-* [avn](https://github.com/wbyoung/avn)
 
 ## notes
 
