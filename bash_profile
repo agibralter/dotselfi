@@ -287,3 +287,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 GPG_TTY="$(tty)"
 export GPG_TTY
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
