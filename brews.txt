@@ -1,8 +1,14 @@
+ack
 awscli
 bash-completion
+bat
 ctags
+curl
 direnv
+dnsmasq
 editorconfig
+exa
+fd
 git
 hub
 jq
@@ -21,5 +27,4 @@ shellcheck
 the_silver_searcher
 tmux
 vim
-watchman
 wget
