@@ -58,5 +58,7 @@ ssh-reagent () {
   echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
 
+ssh-add -A &> /dev/null
+
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
