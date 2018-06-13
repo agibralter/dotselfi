@@ -1,8 +1,7 @@
 " {{{
 noremap <F3> :Autoformat<CR>
-let g:formatdef_sql = '"sqlformat --reindent --keywords upper - identifiers lower -"'
+let g:formatdef_sql = '"sqlformat -r -k upper -i lower -"'
 let g:formatters_sql = ['sql']
-
 " }}}
 
 " {{{ vim-jsx
