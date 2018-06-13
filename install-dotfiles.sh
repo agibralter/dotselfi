@@ -12,30 +12,30 @@ function relink() {
   else
     target_file="$HOME/$2"
   fi
-  if [[ -h $target_file ]] ; then
-    unlink $target_file
+  if [[ -h "$target_file" ]] ; then
+    unlink "$target_file"
   else
     if [[ -f $target_file ]] ; then
-        rm -i $target_file;
+        rm -i "$target_file";
     fi
     if [[ -d $target_file ]] ; then
-        rm -ri $target_file;
+        rm -ri "$target_file";
     fi
   fi
   if [[ -e $source_file ]] ; then
-    ln -sn $source_file $target_file;
+    ln -sn "$source_file" "$target_file";
   fi
 }
 
 # Ensure we have a .ssh dir.
-mkdir -p $HOME/.ssh
-chmod 700 $HOME/.ssh
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
 
 # Set up $HOME/.vimtmp
-mkdir -p $HOME/.vimtmp/backup
-mkdir -p $HOME/.vimtmp/sessions
-mkdir -p $HOME/.vimtmp/swap
-mkdir -p $HOME/.vimtmp/undo
+mkdir -p "$HOME/.vimtmp/backup"
+mkdir -p "$HOME/.vimtmp/sessions"
+mkdir -p "$HOME/.vimtmp/swap"
+mkdir -p "$HOME/.vimtmp/undo"
 
 relink bin
 relink js
@@ -54,12 +54,14 @@ relink gitignore_global
 relink gvimrc
 relink irbrc
 relink iterm2_shell_integration.bash
-relink jslintrc
 relink rdebugrc
 relink rubocop.yml
 relink rvmrc
 relink tmux.conf
 relink vimrc
 relink zshrc
+
+mkdir -p "$HOME/.config/nvim"
+relink nvim-init.vim .config/nvim/init.vim
 
 echo "Done!"

@@ -1,2 +1,0 @@
-/*jslint browser: true, regexp: true, debug: true, indent: 2, sloppy: true, nomen: true*/
-/*global jQuery, $, localStorage, Backbone, _, console*/

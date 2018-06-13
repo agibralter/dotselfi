@@ -50,6 +50,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Gundo'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/closetag.vim'
+Plug 'Chiel92/vim-autoformat'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
