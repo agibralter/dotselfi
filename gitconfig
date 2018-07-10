@@ -30,6 +30,9 @@
   s    = status
   st   = status
   su   = status -uall
+  siv  = "!find . -not -path \".\" -and  -not -path \"*/vendor*\" -maxdepth 1 -exec git status '{}' +"
+  div  = "!find . -not -path \".\" -and  -not -path \"*/vendor*\" -maxdepth 1 -exec git diff '{}' +"
+  dciv = "!find . -not -path \".\" -and  -not -path \"*/vendor*\" -maxdepth 1 -exec git diff --cached '{}' +"
   bl   = "!git branch --sort=committerdate --format='%(HEAD)|%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:magenta)%(authorname)|%(color:blue)%(subject)%(color:reset)' | column -ts'|'"
   b    = branch -vv --color
   ba   = branch -vv --color -a
