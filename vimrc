@@ -39,13 +39,10 @@ set showmatch
 set showmode
 set showcmd
 set hidden
-" In vim 7.4+ these work at the same time...
-set relativenumber
 set number
 set wildmode=list:longest
 set wildignore=*.o,*~,*.pyc
 set visualbell
-set cursorline
 set ttyfast
 set undofile
 set undoreload=10000
@@ -195,6 +192,9 @@ end
 if has('gui_running')
 	set guifont=Inconsolata\ for\ Powerline:h12
 	set background=light
+
+	set cursorline
+	set relativenumber
 
 	" CLI-like prompts
 	set guioptions=ace
