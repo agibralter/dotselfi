@@ -21,7 +21,7 @@ Dotfiles. New and improved.
 * `bash-completion`
 * `ctags`
 * `pstree`
-* `nvm`
+* `nodenv`
 * `golang` (YouCompleteMe)
 * `vim` (use 7.4!)
 * `macvim` (make sure to `brew linkapps macvim`)

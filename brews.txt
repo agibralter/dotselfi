@@ -15,7 +15,7 @@ jq
 kr
 macvim
 nginx
-nvm
+nodenv
 pick
 pstree
 pyenv

@@ -268,11 +268,8 @@ function pgrep() {
 # shellcheck disable=SC1090
 # source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
 
-if [[ -e "/usr/local/opt/nvm/nvm.sh" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  mkdir -p "$NVM_DIR"
-  # shellcheck disable=SC1091
-  source "/usr/local/opt/nvm/nvm.sh"
+if hash nodenv 2>/dev/null; then
+  eval "$(nodenv init -)"
 fi
 
 # shellcheck disable=SC1090
