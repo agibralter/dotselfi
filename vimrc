@@ -1,6 +1,8 @@
 " Prevent output in terminal
 let &shellpipe="&>"
 
+set clipboard=unnamed
+
 set mouse=a
 
 set diffopt+=vertical
