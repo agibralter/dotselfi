@@ -19,19 +19,23 @@ Dotfiles. New and improved.
 
 ## important brew deps for dotselfi
 * `bash-completion`
-* `ctags`
-* `pstree`
-* `nodenv`
-* `golang` (YouCompleteMe)
-* `vim` (use 7.4!)
-* `macvim` (make sure to `brew linkapps macvim`)
-* `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
-* `the_silver_searcher` [link](https://github.com/ggreer/the_silver_searcher)
+* `bat` [link](https://github.com/sharkdp/bat)
 * `cmake` (for YouCompleteMe Vim bundle)
+* `ctags`
+* `diff-so-fancy` [link](https://github.com/so-fancy/diff-so-fancy)
 * `direnv` [link](https://github.com/direnv/direnv)
+* `editorconfig` [link](https://github.com/editorconfig/editorconfig-core-c)
 * `fzf` [link](https://github.com/junegunn/fzf)
-* `rg` [link](https://github.com/BurntSushi/ripgrep)
+* `golang` (YouCompleteMe)
+* `htop` [link](https://github.com/hishamhm/htop)
+* `macvim` (make sure to `brew linkapps macvim`)
+* `nodenv`
+* `noti` [link](https://github.com/variadico/noti)
 * `pick` [link](https://github.com/calleerlandsson/pick)
+* `pstree`
+* `rg` [link](https://github.com/BurntSushi/ripgrep)
+* `the_silver_searcher` [link](https://github.com/ggreer/the_silver_searcher)
+* `vim` (use 7.4!)
 
 ## other important brews
 * `rbenv`

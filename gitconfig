@@ -2,13 +2,6 @@
   name = Aaron Gibralter
   email = aaron.gibralter@gmail.com
 
-[color]
-  ui = auto
-  diff = auto
-
-[color "diff"]
-  whitespace = red reverse
-
 [alias]
   up   = remote update -p
   mff  = merge --ff-only @{u}
@@ -64,6 +57,10 @@
   quotepath = false
   excludesfile = ~/.gitignore_global
 
+[pager]
+  diff = diff-so-fancy | less --tabs=1,5 -RFX --pattern '^(Date|added|deleted|modified): '
+  show = diff-so-fancy | less --tabs=1,5 -RFX
+
 [credential]
   helper = osxkeychain
 
@@ -78,9 +75,31 @@
 
 [rerere]
   enabled = 1
+
 [gpg]
-	program = /usr/local/bin/krgpg
+  program = /usr/local/bin/krgpg
+
 [commit]
-	gpgSign = true
+  gpgSign = true
+
 [tag]
-	forceSignAnnotated = true
+  forceSignAnnotated = true
+
+[color]
+  ui = auto
+  branch = auto
+  status = auto
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
+
+[color "diff"]
+  whitespace = red reverse
+  meta = yellow
+  frag = magenta
+  commit = yellow
+  old = red
+  new = green
