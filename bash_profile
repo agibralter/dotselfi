@@ -264,10 +264,6 @@ function pgrep() {
   find . -maxdepth 1 -mindepth 1| grep -Ev "$exclude" | xargs grep -Elir "$1" | grep -Ev "$exclude" | xargs grep -EHin --color "$1"
 }
 
-# TODO: Does not work with direnv...
-# shellcheck disable=SC1090
-# source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
-
 if hash nodenv 2>/dev/null; then
   eval "$(nodenv init -)"
 fi
@@ -285,3 +281,8 @@ export GPG_TTY
 if hash direnv 2>/dev/null; then
   eval "$(direnv hook bash)"
 fi
+
+# Must come last otherwise it breaks other things that rely on $PS1, such as
+# direnv
+# shellcheck disable=SC1090
+source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
