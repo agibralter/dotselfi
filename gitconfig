@@ -43,6 +43,8 @@
   pot  = "!git push -u origin $(git rev-parse --abbrev-ref HEAD)"
   pr   = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
   rdm  = "!f() { git branch -r --merged | grep -v master | sed 's/origin\\///' | xargs echo git push --delete origin; }; f"
+  rph  = rev-parse HEAD
+  rphs = rev-parse --short HEAD
 
   stash-all = stash save --include-untracked
 
