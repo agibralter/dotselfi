@@ -23,11 +23,6 @@ if [ -d "$HOME/.tmuxifier/bin" ]; then
   export TMUXIFIER_LAYOUT_PATH="$HOME/.tmux-layouts"
 fi
 
-# Add yarn to path.
-if [ -d "$HOME/.yarn/bin" ]; then
-  export PATH="$HOME/.yarn/bin:$PATH"
-fi
-
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
