@@ -49,7 +49,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
       export LDFLAGS
       PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2 --enable-framework" 
       export PYTHON_CONFIGURE_OPTS
-      pyenv "$@"
+      pyenv install "$@"
     )
   }
 fi
