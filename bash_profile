@@ -33,9 +33,28 @@ fi
 
 # Set up pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
-  PYTHON_CONFIGURE_OPTS="--enable-framework"
-  export PYTHON_CONFIGURE_OPTS
+  # __pyenv_readline="$(brew --prefix readline)"
+  __pyenv_readline="/usr/local/opt/readline" # brew prefix is slow
+  # __pyenv_openssl="$(brew --prefix openssl)"
+  __pyenv_openssl="/usr/local/opt/openssl" # brew prefix is slow
+  __pyenv_cflags="-I$__pyenv_readline/include -I$__pyenv_openssl/include -I$(xcrun --show-sdk-path)/usr/include"
+  __pyenv_ldflags="-L$__pyenv_readline/lib -L$__pyenv_openssl/lib"
+
   eval "$(pyenv init -)"
+
+  # Create a wrapper to automatically set compiler flags:
+  # https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
+  function pyenv() {
+    (
+      CFLAGS=$__pyenv_cflags
+      export CFLAGS
+      LDFLAGS=$__pyenv_ldflags
+      export LDFLAGS
+      PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2 --enable-framework" 
+      export PYTHON_CONFIGURE_OPTS
+      command pyenv "$@"
+    )
+  }
 fi
 
 # And pyenv-virtualenv
