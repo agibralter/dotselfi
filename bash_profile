@@ -217,7 +217,7 @@ function parse_git_branch {
 
 function set_prompt() {
   git_prompt="${GREEN}$(parse_git_branch)${COLOR_NONE}"
-  export PS1="$RED\$(date +%H:%M) ${HOSTNAME} $LT_GREEN[\\w] ${git_prompt}\\n${BLUE}\$${COLOR_NONE} "
+  export PS1="$RED\$(date +%H:%M) ${HOSTNAME} ${LT_GREEN}[\\w] ${git_prompt}\\n${BLUE}\$${COLOR_NONE} "
 }
 
 PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
@@ -226,6 +226,10 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 ###############################################################################
 # random functions
 ###############################################################################
+
+function cheat() {
+  curl "cht.sh/$1"
+}
 
 function bbb() {
   brew update; brew upgrade; brew cleanup
