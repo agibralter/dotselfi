@@ -182,12 +182,6 @@ if has("autocmd")
 		au BufRead,BufNewFile /usr/local/etc/nginx/sites-available/* set ft=nginx
 
 		au ColorScheme * highlight clear SignColumn
-
-		autocmd User fugitive
-					\ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-					\   nnoremap <buffer> .. :edit %:h<CR> |
-					\ endif
-		autocmd BufReadPost fugitive://* set bufhidden=delete
 	augroup END
 end
 
