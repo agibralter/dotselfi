@@ -45,6 +45,7 @@
   rdm  = "!f() { git branch -r --merged | grep -v master | sed 's/origin\\///' | xargs echo git push --delete origin; }; f"
   rph  = rev-parse HEAD
   rphs = rev-parse --short HEAD
+  rup  = reset --hard @{upstream}
 
   stash-all = stash save --include-untracked
 
