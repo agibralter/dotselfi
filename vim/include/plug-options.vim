@@ -1,4 +1,5 @@
 " {{{
+" Make sure to pip install sqlparse
 noremap <F3> :Autoformat<CR>
 let g:formatdef_sql = '"sqlformat -r -k upper -i lower -"'
 let g:formatters_sql = ['sql']
