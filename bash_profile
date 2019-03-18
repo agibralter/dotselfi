@@ -227,6 +227,12 @@ PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
 # random functions
 ###############################################################################
 
+# Usage `$gifify name-of-input-file.mov name-of-output-file.gif`
+# Run on a .mov or video file.
+function gifify() {
+  docker run -it --rm -v "$(pwd)":/data maxogden/gifify "$1" -o "$2"
+}
+
 function cheat() {
   curl "cht.sh/$1"
 }
