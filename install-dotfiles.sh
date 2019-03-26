@@ -45,6 +45,7 @@ relink vim
 
 relink ackrc
 relink alacritty.yml
+relink allshellsrc
 relink bash_profile
 relink bashrc
 relink eslintrc
@@ -54,6 +55,7 @@ relink gitignore_global
 relink gvimrc
 relink irbrc
 relink iterm2_shell_integration.bash
+relink iterm2_shell_integration.zsh
 relink rdebugrc
 relink rvmrc
 relink tmux.conf
