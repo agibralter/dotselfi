@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ###############################################################################
 # bash setup
 ###############################################################################
@@ -17,77 +15,13 @@ if [ -f "$HOME/.bashrc" ]; then source "$HOME/.bashrc"; fi
 # shellcheck disable=SC1090
 if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 
-###############################################################################
-# lib setup
-###############################################################################
+# Add custom bin directory to path.
+export PATH="$HOME/.bin:$PATH"
 
-# Set up rvm...
-if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-  # shellcheck disable=SC1090
-  source "$HOME/.rvm/scripts/rvm"
-fi
-
-if hash rbenv 2>/dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-# Set up pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-
-  # Create a wrapper to automatically set compiler flags:
-  # https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
-  function pyenv_install() {
-    (
-      __pyenv_readline="$(brew --prefix readline)"
-      __pyenv_openssl="$(brew --prefix openssl)"
-      __pyenv_cflags="-I$__pyenv_readline/include -I$__pyenv_openssl/include -I$(xcrun --show-sdk-path)/usr/include"
-      __pyenv_ldflags="-L$__pyenv_readline/lib -L$__pyenv_openssl/lib"
-      CFLAGS=$__pyenv_cflags
-      export CFLAGS
-      LDFLAGS=$__pyenv_ldflags
-      export LDFLAGS
-      PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2 --enable-framework" 
-      export PYTHON_CONFIGURE_OPTS
-      pyenv install "$@"
-    )
-  }
-fi
-
-# And pyenv-virtualenv
-if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
-  eval "$(pyenv virtualenv-init -)"
-fi
-
-# Set up tmuxifier.
-if hash tmuxifier 2>/dev/null; then
-  eval "$(tmuxifier init -)"
-fi
-
-# Set up alacritty
-if [[ -d $ALACRITTY_PATH ]]; then
-  export PATH="$ALACRITTY_PATH:$PATH"
-fi
-
-# Tab Completions
-if hash brew 2>/dev/null; then
-  if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    # Source all custom bash completions
-    # shellcheck disable=SC1090
-    . "$(brew --prefix)/etc/bash_completion"
-
-    # shellcheck disable=SC1090
-    for f in ~/.bin/bash-completion/*; do source "$f"; done
-
-    # Autocomplete for 'g' alias as well.
-    complete -o default -o nospace -F _git g
-  fi
-fi
-
-# Hub
-if hash hub 2>/dev/null; then
-  eval "$(hub alias -s)"
-fi
+export EDITOR="vim"
+export SVN_EDITOR="vim"
+export GIT_EDITOR='vim'
+export GEMEDITOR="vim"
 
 ###############################################################################
 # aliases
@@ -143,19 +77,107 @@ shopt -s cmdhist
 PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
 ###############################################################################
+# ssh stuff
+###############################################################################
+
+SOCK="/tmp/ssh-agent-$USER-screen"
+if test "$SSH_AUTH_SOCK" && [ "$SSH_AUTH_SOCK" != "$SOCK" ]; then
+  rm -f "/tmp/ssh-agent-$USER-screen"
+  ln -sf "$SSH_AUTH_SOCK" "$SOCK"
+  export SSH_AUTH_SOCK=$SOCK
+fi
+
+ssh-reagent () {
+  for agent in /tmp/ssh-*/agent.*; do
+    export SSH_AUTH_SOCK=$agent
+    if ssh-add -l >/dev/null 2>&1; then
+      echo Found working SSH Agent:
+      ssh-add -l
+      return
+    fi
+  done
+  echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+ssh-add -A &> /dev/null
+
+###############################################################################
+# lib setup
+###############################################################################
+
+# Heroku Toolbelt
+if [ -d /usr/local/heroku/bin ]; then
+  export PATH="/usr/local/heroku/bin:$PATH"
+fi
+
+# if hash rbenv 2>/dev/null; then
+#   eval "$(rbenv init -)"
+# fi
+
+# Set up pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+
+  # Create a wrapper to automatically set compiler flags:
+  # https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
+  function pyenv_install() {
+    (
+      __pyenv_readline="$(brew --prefix readline)"
+      __pyenv_openssl="$(brew --prefix openssl)"
+      __pyenv_cflags="-I$__pyenv_readline/include -I$__pyenv_openssl/include -I$(xcrun --show-sdk-path)/usr/include"
+      __pyenv_ldflags="-L$__pyenv_readline/lib -L$__pyenv_openssl/lib"
+      CFLAGS=$__pyenv_cflags
+      export CFLAGS
+      LDFLAGS=$__pyenv_ldflags
+      export LDFLAGS
+      PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2 --enable-framework" 
+      export PYTHON_CONFIGURE_OPTS
+      pyenv install "$@"
+    )
+  }
+fi
+
+# And pyenv-virtualenv
+if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# Set up alacritty
+if [[ -d $ALACRITTY_PATH ]]; then
+  export PATH="$ALACRITTY_PATH:$PATH"
+fi
+
+# Tab Completions
+if hash brew 2>/dev/null; then
+  if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    # Source all custom bash completions
+    # shellcheck disable=SC1090
+    . "$(brew --prefix)/etc/bash_completion"
+
+    # shellcheck disable=SC1090
+    for f in ~/.bin/bash-completion/*; do source "$f"; done
+
+    # Autocomplete for 'g' alias as well.
+    complete -o default -o nospace -F _git g
+  fi
+fi
+
+# Hub
+if hash hub 2>/dev/null; then
+  eval "$(hub alias -s)"
+fi
+
+###############################################################################
 # bash prompt
 ###############################################################################
 
 # Colors
 RED="\\[\\033[0;31m\\]"
-# PINK="\\[\\033[1;31m\\]"
 YELLOW="\\[\\033[0;33m\\]"
 GREEN="\\[\\033[0;32m\\]"
 LT_GREEN="\\[\\033[1;32m\\]"
 BLUE="\\[\\033[0;34m\\]"
 WHITE="\\[\\033[1;37m\\]"
-# PURPLE="\\[\\033[1;35m\\]"
-# CYAN="\\[\\033[1;36m\\]"
 COLOR_NONE="\\[\\033[0m\\]"
 LIGHTNING_BOLT="⚡"
 UP_ARROW="↑"
@@ -221,7 +243,6 @@ function set_prompt() {
 }
 
 PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
-
 
 ###############################################################################
 # random functions
@@ -312,3 +333,5 @@ fi
 # direnv
 # shellcheck disable=SC1090
 source "$HOME/.iterm2_shell_integration.$(basename "$SHELL")"
+
+# vim:set ft=bash:
