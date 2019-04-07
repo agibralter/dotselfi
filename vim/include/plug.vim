@@ -2,6 +2,8 @@ let g:plug_timeout = 120
 call plug#begin('~/.vim/plugged')
 
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+
+Plug 'Chiel92/vim-autoformat'
 Plug 'SirVer/ultisnips'
 Plug 'Townk/vim-autoclose'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " Code completion
@@ -9,7 +11,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'bronson/vim-visual-star-search'
-Plug 'cakebaker/scss-syntax.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'duff/vim-bufonly'
 Plug 'editorconfig/editorconfig-vim'
@@ -31,7 +32,6 @@ Plug 'nvie/vim-flake8'
 Plug 'rhysd/vim-crystal'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-dispatch'
@@ -50,7 +50,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/Gundo'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/closetag.vim'
-Plug 'Chiel92/vim-autoformat'
+Plug 'w0rp/ale'
 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 

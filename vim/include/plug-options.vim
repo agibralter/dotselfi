@@ -9,18 +9,6 @@ let g:formatters_sql = ['sql']
 let g:jsx_ext_required = 0
 " }}}
 
-" {{{ syntastic
-let g:syntastic_check_on_open = 1
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_jump = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_wq = 0
-" These are too slow right now...
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_ruby_checkers=['mri', 'rubocop']
-" let g:syntastic_ruby_rubocop_exec = 'rubocop.sh'
-" }}}
-
 " {{{ markdown
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'javascript']
 " }}}
