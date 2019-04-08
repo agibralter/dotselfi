@@ -180,6 +180,7 @@ if has("autocmd")
 		au BufRead,BufNewFile /etc/nginx/conf/* set ft=nginx
 		au BufRead,BufNewFile /etc/nginx/sites-available/* set ft=nginx
 		au BufRead,BufNewFile /usr/local/etc/nginx/sites-available/* set ft=nginx
+		au BufRead,BufNewFile *.dpl set ft=sql
 
 		au ColorScheme * highlight clear SignColumn
 	augroup END
