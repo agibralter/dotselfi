@@ -202,7 +202,7 @@ fi
 # Must come last otherwise it breaks other things that rely on $PS1, such as
 # direnv
 # shellcheck disable=SC1090
-source "$HOME/.iterm2_shell_integration.$__shell"
+test -e "$HOME/.iterm2_shell_integration.$__shell" && source "$HOME/.iterm2_shell_integration.$__shell"
 
 ###############################################################################
 # cleanup
