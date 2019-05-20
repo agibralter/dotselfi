@@ -31,6 +31,7 @@
   ba   = branch -vv --color -a
   bm   = branch -vv --color --merged
   bd   = branch -d
+  bdd  = branch -D
   bdp  = "!git branch -D $(git branch | cut -c 3- | pick)"
   bmdp = "!git branch -d $(git branch --merged | cut -c 3- | pick)"
   rip  = "!git rebase -i $(git branch | cut -c 3- | pick)"
@@ -64,6 +65,7 @@
 [pager]
   diff = diff-so-fancy | less --tabs=1,5 -RFX --pattern '^(Date|added|deleted|modified): '
   show = diff-so-fancy | less --tabs=1,5 -RFX
+  branch = false
 
 [credential]
   helper = osxkeychain
