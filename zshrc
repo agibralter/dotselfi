@@ -87,3 +87,6 @@ source $ZSH/oh-my-zsh.sh
 
 # shellcheck disable=SC1090
 source "$HOME/.allshellsrc"
+
+# Added by Krypton
+export GPG_TTY=$(tty)
