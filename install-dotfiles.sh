@@ -1,13 +1,17 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # The directory this script is in.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd "$DIR"
 
 echo "Running $DIR/install-dotfiles.sh"
 
 function relink() {
   source_file="$DIR/$1"
-  if [ -z "$2" ] ; then
+  if [ -z "${2:-}" ] ; then
     target_file="$HOME/.$1"
   else
     target_file="$HOME/$2"
@@ -65,4 +69,5 @@ relink zshrc
 mkdir -p "$HOME/.config/nvim"
 relink nvim-init.vim .config/nvim/init.vim
 
-echo "Done!"
+# Install all homebrew deps
+brew bundle
