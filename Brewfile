@@ -68,12 +68,12 @@ brew "shellcheck"
 brew "terminal-notifier"
 brew "tmux"
 brew "tree"
-brew "vim"
 brew "wget"
 brew "yarn"
 brew "zsh"
 
 cask "1password"
+cask "atext"
 cask "brave-browser"
 cask "dash"
 cask "docker"
@@ -97,4 +97,4 @@ mas "HTTP Client", id: 418138339
 mas "Magnet", id: 441258766
 mas "Pastebot", id: 1179623856
 mas "Xcode", id: 497799835
-mas "aText", id: 488566438 # aText hack: https://www.trankynam.com/atext/doc/index.html#line2
+# mas "aText", id: 488566438 # aText hack: https://www.trankynam.com/atext/doc/index.html#line2
