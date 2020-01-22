@@ -9,6 +9,9 @@ if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
+# Add Homebrew sbin
+export PATH="/usr/local/sbin:$PATH"
+
 export EDITOR="vim"
 export SVN_EDITOR="vim"
 export GIT_EDITOR='vim'
