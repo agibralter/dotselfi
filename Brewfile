@@ -72,6 +72,7 @@ brew "zsh"
 
 cask "1password-cli"
 cask "atext"
+cask "aws-vault"
 cask "brave-browser"
 cask "dash"
 cask "docker"

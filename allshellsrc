@@ -142,6 +142,30 @@ fi
 # random functions
 ###############################################################################
 
+function aws-vault-use() {
+  local profile output duration
+
+  profile="$1"
+  duration="$2"
+
+  if [[ -z $AWS_VAULT_BACKEND || -z $AWS_VAULT_FILE_PASSPHRASE ]]; then
+    echo "Must set \$AWS_VAULT_BACKEND and \$AWS_VAULT_FILE_PASSPHRASE."
+    return 1
+  fi
+
+  if [[ ! -z $duration ]]; then
+    duration="--duration=$duration"
+  fi
+
+  output="$(aws-vault exec "$profile" "$duration" -- env)"
+  if [[ $? -ne 0 ]]; then
+    echo "$output" >&2
+    return 1
+  fi
+
+  eval "$(echo "$output" | awk '/^AWS/ && !/^AWS_VAULT/ { print "export " $1 }')"
+}
+
 # Usage `$gifify name-of-input-file.mov name-of-output-file.gif`
 # Run on a .mov or video file.
 function gifify() {
