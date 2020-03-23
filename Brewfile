@@ -70,6 +70,7 @@ brew "wget"
 brew "yarn"
 brew "zsh"
 
+cask "1password-cli"
 cask "atext"
 cask "brave-browser"
 cask "dash"
