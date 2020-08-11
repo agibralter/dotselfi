@@ -246,6 +246,9 @@ fi
 [ -f "$HOME/.fzf.$__shell" ] && source "$HOME/.fzf.$__shell"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# Set up asdf
+[ -f "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/asdf.sh"
+
 # Set up direnv (must be last thing that modifies prompt).
 if hash direnv 2>/dev/null; then
 	eval "$(direnv hook "$__shell")"
