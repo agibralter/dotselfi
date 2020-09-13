@@ -87,6 +87,9 @@
   gpgsign = true
   verbose = true
 
+[gpg]
+	program = /usr/local/bin/gpg
+
 [tag]
   forceSignAnnotated = true
 
