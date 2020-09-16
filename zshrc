@@ -51,6 +51,7 @@ plugins=(
   osx
   rake
   ruby
+  virtualenv
 )
 
 # User configuration
@@ -85,8 +86,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export ZSH_THEME_VIRTUALENV_SUFFIX="] "
+PROMPT+='$(virtualenv_prompt_info)'
+
 # shellcheck disable=SC1090
 source "$HOME/.allshellsrc"
-
-# Added by Krypton
-export GPG_TTY=$(tty)
