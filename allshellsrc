@@ -13,9 +13,6 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export EDITOR="vim"
-export SVN_EDITOR="vim"
-export GIT_EDITOR='vim'
-export GEMEDITOR="vim"
 
 __shell="$(basename "$SHELL")"
 
