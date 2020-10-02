@@ -9,3 +9,5 @@ tags.temp
 *.iml
 vendor/cache/**/Gemfile.lock
 vendor/cache/**/.rakeTasks
+*.ignore.*
+/.vscode
