@@ -1,1 +1,2 @@
-set fuopt=maxvert,maxhorz
+set macligatures
+set guifont=Fira\ Code:h12

@@ -146,22 +146,16 @@ function aws-vault-use() {
   profile="$1"
   duration="$2"
 
-  if [[ -z $AWS_VAULT_BACKEND || -z $AWS_VAULT_FILE_PASSPHRASE ]]; then
-    echo "Must set \$AWS_VAULT_BACKEND and \$AWS_VAULT_FILE_PASSPHRASE."
-    return 1
-  fi
-
-  if [[ ! -z $duration ]]; then
+  if [[ -n $duration ]]; then
     duration="--duration=$duration"
   fi
-
-  output="$(aws-vault exec "$profile" "$duration" -- env)"
-  if [[ $? -ne 0 ]]; then
+  
+  if ! output="$(aws-vault exec "$profile" "$duration" -- env)"; then
     echo "$output" >&2
     return 1
   fi
 
-  eval "$(echo "$output" | awk '/^AWS/ && !/^AWS_VAULT/ { print "export " $1 }')"
+  eval "$(echo "$output" | awk '/^AWS/ { print "export " $1 }')"
 }
 
 # Usage `$gifify name-of-input-file.mov name-of-output-file.gif`
@@ -213,11 +207,12 @@ function osx-reset-video() {
 # fd - cd to selected directory
 fd() {
   local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+  dir=$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir" || return
 }
 
 # fh - search in your command history and execute selected command
 fh() {
+	# shellcheck disable=SC2015
   eval "$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')"
 }
 
