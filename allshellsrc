@@ -252,11 +252,6 @@ if hash direnv 2>/dev/null; then
 	eval "$(direnv hook "$__shell")"
 fi
 
-# Must come last otherwise it breaks other things that rely on $PS1, such as
-# direnv
-# shellcheck disable=SC1090
-test -e "$HOME/.iterm2_shell_integration.$__shell" && source "$HOME/.iterm2_shell_integration.$__shell"
-
 ###############################################################################
 # cleanup
 ###############################################################################

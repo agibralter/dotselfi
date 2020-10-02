@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # shellcheck disable=SC1090
 source "$HOME/.allshellsrc"
 
@@ -26,81 +27,13 @@ if hash brew 2>/dev/null; then
   fi
 fi
 
-###############################################################################
-# bash prompt
-###############################################################################
+if hash starship 2>/dev/null; then
+  eval "$(starship init bash)"
+fi
 
-# Colors
-RED="\\[\\033[0;31m\\]"
-YELLOW="\\[\\033[0;33m\\]"
-GREEN="\\[\\033[0;32m\\]"
-LT_GREEN="\\[\\033[1;32m\\]"
-BLUE="\\[\\033[0;34m\\]"
-WHITE="\\[\\033[1;37m\\]"
-COLOR_NONE="\\[\\033[0m\\]"
-LIGHTNING_BOLT="⚡"
-UP_ARROW="↑"
-DOWN_ARROW="↓"
-UD_ARROW="↕"
-RECYCLE="♺"
-
-function parse_git_branch {
-  local branch_pattern
-  local remote_pattern
-  local diverge_pattern
-  local initials
-
-  branch_pattern="^(# )?On branch ([^${IFS}]*)"
-  remote_pattern="(# )?Your branch is (.*) of"
-  diverge_pattern="(# )?Your branch and (.*) have diverged"
-  initials=$(git config user.initials)
-
-  if [[ -n $initials ]]; then
-    initials=" [${initials}] "
-  else
-    initials=""
-  fi
-
-  git_status="$(git status 2>/dev/null)"
-  if [[ ! ${git_status} =~ ${branch_pattern} ]]; then
-    return
-  fi
-  branch=${BASH_REMATCH[2]}
-
-  # Dirty?
-  if [[ ! ${git_status} =~ "working tree clean" ]]; then
-    git_is_dirty="${RED}${LIGHTNING_BOLT}"
-  else
-    git_is_dirty=
-  fi
-
-  # Do we need to push to origin?
-  git_log_linecount="$(git log --pretty=oneline "origin/${branch}..${branch}" 2>/dev/null | wc -l)"
-  if [[ ! ${git_log_linecount} =~ "0" ]]; then
-    needs_push="${WHITE}${RECYCLE}"
-  fi
-
-  # Are we ahead of, beind, or diverged from the remote?
-  if [[ ${git_status} =~ ${remote_pattern} ]]; then
-    if [[ ${BASH_REMATCH[2]} =~ "ahead" ]]; then
-      remote="${YELLOW}${UP_ARROW}"
-    else
-      remote="${YELLOW}${DOWN_ARROW}"
-    fi
-  fi
-
-  if [[ ${git_status} =~ ${diverge_pattern} ]]; then
-    remote="${YELLOW}${UD_ARROW}"
-  fi
-
-  echo "(${branch})${initials}${remote}${git_is_dirty}${needs_push}"
-}
-
-function set_prompt() {
-  git_prompt="${GREEN}$(parse_git_branch)${COLOR_NONE}"
-  export PS1="$RED\$(date +%H:%M) ${HOSTNAME} ${LT_GREEN}[\\w] ${git_prompt}\\n${BLUE}\$${COLOR_NONE} "
-}
-
-PROMPT_COMMAND="$PROMPT_COMMAND set_prompt"
+# Must come last otherwise it breaks other things that rely on $PS1, such as
+# direnv
+# shellcheck disable=SC1090
+test -e "$HOME/.iterm2_shell_integration.bash" && source "$HOME/.iterm2_shell_integration.bash"
 
 # vim:ft=bash:tw=0:ts=2:sw=2:noet:nolist:foldmethod=marker

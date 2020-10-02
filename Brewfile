@@ -13,12 +13,14 @@ tap "puma/puma"
 tap "raggi/ale"
 
 brew "ack"
+brew "asdf"
 brew "autoconf"
 brew "awscli"
 brew "bash-completion"
 brew "bat"
 brew "brew-cask-completion"
 brew "cmake"
+brew "coreutils"
 brew "crystal"
 brew "cscope"
 brew "ctags"
@@ -57,14 +59,15 @@ brew "pick"
 brew "postgresql"
 brew "pstree"
 brew "puma/puma/puma-dev"
-brew "pyenv"
 brew "pyenv-virtualenv"
+brew "pyenv"
 brew "raggi/ale/openssl-osx-ca"
 brew "rbenv"
 brew "redis"
 brew "ripgrep"
 brew "ruby-build"
 brew "shellcheck"
+brew "starship"
 brew "terminal-notifier"
 brew "tmux"
 brew "tree"
@@ -89,7 +92,7 @@ cask "jetbrains-toolbox"
 cask "little-snitch"
 cask "micro-snitch"
 cask "ngrok"
-cask "slack"
+# cask "slack" => prefer to just download latest version
 cask "spotify"
 cask "tunnelblick"
 
@@ -97,5 +100,5 @@ mas "Amphetamine", id: 937984704
 mas "HTTP Client", id: 418138339
 mas "Magnet", id: 441258766
 mas "Pastebot", id: 1179623856
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835
 # mas "aText", id: 488566438 # aText hack: https://www.trankynam.com/atext/doc/index.html#line2

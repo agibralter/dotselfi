@@ -69,5 +69,8 @@ relink zshrc
 mkdir -p "$HOME/.config/nvim"
 relink nvim-init.vim .config/nvim/init.vim
 
+mkdir -p "$HOME/config"
+relink starship.toml .config/starship.toml
+
 # Install all homebrew deps
 brew bundle

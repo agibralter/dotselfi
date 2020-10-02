@@ -96,3 +96,10 @@ PROMPT+='$(virtualenv_prompt_info)'
 
 # shellcheck disable=SC1090
 source "$HOME/.allshellsrc"
+
+eval "$(starship init zsh)"
+
+# Must come last otherwise it breaks other things that rely on $PS1, such as
+# direnv
+# shellcheck disable=SC1090
+test -e "$HOME/.iterm2_shell_integration.zsh" && source "$HOME/.iterm2_shell_integration.zsh"
