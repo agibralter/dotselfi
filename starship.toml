@@ -1,21 +1,3 @@
-[battery]
-full_symbol = ":battery:"
-charging_symbol = ":zap:️"
-discharging_symbol = ":skull:"
-disabled = false
-
-[[battery.display]]
-threshold = 10
-style = "bold red"
-
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 30
-style = "bold yellow"
-
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 50
-style = "white"
-
 [docker_context]
 disabled = false
 
@@ -26,7 +8,4 @@ disabled = false
 disabled = false
 
 [status]
-style = "bg:blue"
-symbol = "💣 "
-format = "[\\[$symbol$status\\]]($style) "
 disabled = false
