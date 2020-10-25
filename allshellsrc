@@ -149,6 +149,9 @@ function aws-vault-use() {
   if [[ -n $duration ]]; then
     duration="--duration=$duration"
   fi
+
+	# Avoid message about nested sessions
+	unset AWS_VAULT
   
   if ! output="$(aws-vault exec "$profile" "$duration" -- env)"; then
     echo "$output" >&2
