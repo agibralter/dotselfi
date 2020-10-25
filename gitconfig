@@ -107,7 +107,7 @@
   templateDir = ~/.git-templates
 
 [rebase]
-	instructionFormat = (%an <%ae>) %s
+	instructionFormat = "(%an <%ae>) %s"
 
 [mergetool "vscode"]
   cmd = code --wait $MERGED
@@ -117,14 +117,14 @@
   cmd = code --wait --diff $LOCAL $REMOTE
 
 [core]
-  editor = code --wait
+  # editor = code --wait
+  editor = vim
 [merge]
-  tool = vscode
-  # tool = fugitive
-
+  # tool = vscode
+  tool = fugitive
 [diff]
-  tool = vscode
-  # tool = vimdiff
+  # tool = vscode
+  tool = vimdiff
 
 [secrets]
   providers = /usr/local/bin/git-secrets --aws-provider
