@@ -98,12 +98,14 @@ runtime macros/matchit.vim
 " }}}
 
 " {{{ solarized
-" If not using iTerm 2 with Solarized, enable the 'degraded 256 colorscheme'
-" let g:solarized_termcolors = 256
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
 colorscheme solarized
 call togglebg#map("<F5>")
+if $VSCODE != ""
+  " If not using iTerm 2 with Solarized, enable the 'degraded 256 colorscheme'
+  let g:solarized_termcolors = 256
+  " let g:solarized_visibility = "high"
+  " let g:solarized_contrast = "high"
+endif
 " }}}
 
 " {{{ Tabularize
