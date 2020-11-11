@@ -11,3 +11,4 @@ vendor/cache/**/Gemfile.lock
 vendor/cache/**/.rakeTasks
 *.ignore.*
 /.vscode
+/.venv
