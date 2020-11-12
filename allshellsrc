@@ -89,6 +89,14 @@ ssh-add -A &> /dev/null
 # lib setup
 ###############################################################################
 
+# Go
+export GOPATH="${HOME}/.go"
+GOROOT="$(brew --prefix golang)/libexec"
+export GOROOT
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+test -d "${GOPATH}" || mkdir "${GOPATH}"
+test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
+
 # Heroku Toolbelt
 if [ -d /usr/local/heroku/bin ]; then
   export PATH="/usr/local/heroku/bin:$PATH"
