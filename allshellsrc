@@ -34,10 +34,6 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias killpyc="find . -name '*.pyc' -delete"
 alias bip="bundle install --binstubs=.bundler_bin --path=vendor/bundle"
 
-# Prevent annoying warning from `brew doctor` related to pyenv
-# https://github.com/pyenv/pyenv/issues/106#issuecomment-440826532
-alias brew='env PATH=${PATH//$(pyenv root)\/shims:/} brew'
-
 function pstreeme() {
   pstree -aup "$(whoami)"
 }
@@ -104,34 +100,6 @@ fi
 
 if hash rbenv 2>/dev/null; then
   eval "$(rbenv init -)"
-fi
-
-# Set up pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-
-  # Create a wrapper to automatically set compiler flags:
-  # https://github.com/pyenv/pyenv/issues/1219#issuecomment-428793012
-  function pyenv_install() {
-    (
-      __pyenv_readline="$(brew --prefix readline)"
-      __pyenv_openssl="$(brew --prefix openssl)"
-      __pyenv_cflags="-I$__pyenv_readline/include -I$__pyenv_openssl/include -I$(xcrun --show-sdk-path)/usr/include"
-      __pyenv_ldflags="-L$__pyenv_readline/lib -L$__pyenv_openssl/lib"
-      CFLAGS=$__pyenv_cflags
-      export CFLAGS
-      LDFLAGS=$__pyenv_ldflags
-      export LDFLAGS
-      PYTHON_CONFIGURE_OPTS="--enable-unicode=ucs2 --enable-framework"
-      export PYTHON_CONFIGURE_OPTS
-      pyenv install "$@"
-    )
-  }
-fi
-
-# And pyenv-virtualenv
-if command -v pyenv-virtualenv 1>/dev/null 2>&1; then
-  eval "$(pyenv virtualenv-init -)"
 fi
 
 # Set up alacritty
