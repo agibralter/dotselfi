@@ -1,11 +1,69 @@
+# Default here: https://starship.rs/config/#prompt
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$cmd_duration\
+$custom\
+$line_break\
+$lua\
+$jobs\
+$battery\
+$time\
+$status\
+$character"""
+
 [docker_context]
 disabled = false
 
 [kubernetes]
 disabled = false
+format = '[$symbol $context( \($namespace\))]($style) '
 
 [time]
 disabled = false
 
 [status]
 disabled = false
+
+[gcloud]
+disabled = true
