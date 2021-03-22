@@ -87,7 +87,11 @@ ssh-add -A &> /dev/null
 
 # Go
 export GOPATH="${HOME}/.go"
-GOROOT="$(brew --prefix golang)/libexec"
+# brew --prefix is slow: https://github.com/Homebrew/brew/issues/3327
+# Seems that it's slow onyl for some formulas... I wonder if it is because of
+# a loop rather than a hash lookup (e.g. asdf is fast but golang is slow).
+# GOROOT="$(brew --prefix golang)/libexec"
+GOROOT="/usr/local/opt/go/libexec"
 export GOROOT
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
@@ -219,7 +223,11 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Set up asdf
-[ -f "$(brew --prefix asdf)/asdf.sh" ] && source "$(brew --prefix asdf)/asdf.sh"
+
+__asdf_prefix="/usr/local/opt/asdf"
+# __asdf_prefix=$(brew --prefix asdf)
+[ -f "$__asdf_prefix/asdf.sh" ] && source "$__asdf_prefix/asdf.sh"
+unset __asdf_prefix
 
 # Set up direnv (must be last thing that modifies prompt).
 if hash direnv 2>/dev/null; then
