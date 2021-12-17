@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   bundler
   git
-  osx
+  macos
   rake
   ruby
   virtualenv
