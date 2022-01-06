@@ -73,29 +73,29 @@ brew "yarn"
 brew "zsh"
 
 cask "1password-cli"
-cask "atext"
+# cask "atext"
 cask "aws-vault"
-cask "brave-browser"
+# cask "brave-browser"
 cask "dash"
-cask "docker"
+# cask "docker"
 cask "dropbox"
-cask "firefox"
+# cask "firefox"
 cask "font-fira-code"
 # cask "font-meslo-for-powerline"
-cask "google-chrome"
+# cask "google-chrome"
 cask "google-cloud-sdk"
 cask "gpg-suite"
-cask "iterm2"
+# cask "iterm2"
 cask "jetbrains-toolbox"
 cask "little-snitch"
 cask "micro-snitch"
 cask "ngrok"
 # cask "slack" => prefer to just download latest version
-cask "spotify"
+# cask "spotify"
 cask "tunnelblick"
 
 mas "Amphetamine", id: 937984704
-mas "HTTP Client", id: 418138339
+# mas "HTTP Client", id: 418138339
 mas "Magnet", id: 441258766
 mas "Pastebot", id: 1179623856
 # mas "Xcode", id: 497799835
