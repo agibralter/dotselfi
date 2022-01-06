@@ -51,6 +51,7 @@ ZSH_THEME="robbyrussell"
 plugins=(
   bundler
   git
+  gitfast
   macos
   rake
   ruby

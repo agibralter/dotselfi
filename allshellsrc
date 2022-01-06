@@ -111,11 +111,6 @@ if [[ -d $ALACRITTY_PATH ]]; then
   export PATH="$ALACRITTY_PATH:$PATH"
 fi
 
-# Hub
-if hash hub 2>/dev/null; then
-  eval "$(hub alias -s)"
-fi
-
 ###############################################################################
 # random functions
 ###############################################################################

@@ -12,7 +12,7 @@ Dotfiles. New and improved.
 * aText
 * Chrome / Brave / Firefox
 * Docker for Mac
-* iTerm 2
+* iTerm 2 / [Hyper](https://hyper.is/)
 * Spotify
 
 ## other stuff
