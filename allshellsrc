@@ -4,14 +4,14 @@
 ###############################################################################
 
 # Source extras.
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
 # Add Homebrew sbin
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(brew shellenv)"
 
 export EDITOR="vim"
 
