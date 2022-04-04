@@ -10,8 +10,13 @@ if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
-# Add Homebrew sbin
-eval "$(brew shellenv)"
+# Add Homebrew PATHs
+brew=$(test -f "/opt/homebrew/bin/brew" && echo "/opt/homebrew/bin/brew" || echo "/usr/local/bin/brew")
+eval "$($brew shellenv)"
+unset brew
+
+# Calculate brew prefix
+brew_prefix=$(brew --prefix)
 
 export EDITOR="vim"
 
@@ -87,11 +92,7 @@ ssh-add -A &> /dev/null
 
 # Go
 export GOPATH="${HOME}/.go"
-# brew --prefix is slow: https://github.com/Homebrew/brew/issues/3327
-# Seems that it's slow onyl for some formulas... I wonder if it is because of
-# a loop rather than a hash lookup (e.g. asdf is fast but golang is slow).
-# GOROOT="$(brew --prefix golang)/libexec"
-GOROOT="/usr/local/opt/go/libexec"
+GOROOT="$brew_prefix/opt/go/libexec"
 export GOROOT
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
@@ -218,9 +219,7 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Set up asdf
-
-__asdf_prefix="/usr/local/opt/asdf"
-# __asdf_prefix=$(brew --prefix asdf)
+__asdf_prefix="$brew_prefix/opt/asdf"
 [ -f "$__asdf_prefix/asdf.sh" ] && source "$__asdf_prefix/asdf.sh"
 unset __asdf_prefix
 
@@ -233,5 +232,5 @@ fi
 # cleanup
 ###############################################################################
 unset __shell
-
+unset brew_prefix
 # vim:ft=bash:tw=0:ts=2:sw=2:noet:nolist:foldmethod=marker
