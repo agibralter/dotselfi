@@ -1,0 +1,21 @@
+#! /bin/bash
+
+set -euo pipefail
+
+exec 6>/dev/null
+
+if [ -z "${REBUILD:-}" ]; then
+    opts="-q"
+else
+    echo "REBUILDING!"
+    opts=(--force-rm --no-cache)
+    exec 6>&1
+fi
+
+docker build \
+    "${opts[@]}" \
+    -f "$HOME/.bin/sqlfluff-with-dbt-support/Dockerfile" \
+    -t sqlfluff-with-dbt "$HOME/.bin/sqlfluff-with-dbt-support" \
+    >&6
+
+docker run -it --rm -v "$PWD:/sql" -v "$HOME/.dbt:/.dbt" sqlfluff-with-dbt:latest "$@"
