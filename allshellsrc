@@ -183,6 +183,10 @@ function osx-reset-video() {
   sudo killall AppleCameraAssistant
 }
 
+gcdr() {
+	cd "$(git rev-parse --show-toplevel)" || return
+}
+
 # fd - cd to selected directory
 fcd() {
   local dir
