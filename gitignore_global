@@ -12,3 +12,4 @@ vendor/cache/**/.rakeTasks
 *.ignore.*
 /.vscode
 /.venv
+.DS_Store
