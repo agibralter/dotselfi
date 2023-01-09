@@ -223,7 +223,7 @@ fi
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Set up asdf
-__asdf_prefix="$brew_prefix/opt/asdf"
+__asdf_prefix="$brew_prefix/opt/asdf/libexec"
 [ -f "$__asdf_prefix/asdf.sh" ] && source "$__asdf_prefix/asdf.sh"
 unset __asdf_prefix
 
