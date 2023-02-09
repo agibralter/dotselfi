@@ -19,15 +19,12 @@ function relink() {
   if [[ -h "$target_file" ]] ; then
     unlink "$target_file"
   else
-    if [[ -f $target_file ]] ; then
-        rm -i "$target_file";
-    fi
-    if [[ -d $target_file ]] ; then
-        rm -ri "$target_file";
+    if [[ -f $target_file || -d $target_file ]] ; then
+        mv "$target_file" "$target_file.bak"
     fi
   fi
   if [[ -e $source_file ]] ; then
-    ln -sn "$source_file" "$target_file";
+    ln -sn "$source_file" "$target_file"
   fi
 }
 
