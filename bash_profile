@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# shellcheck disable=SC1090
+# shellcheck disable=SC1091
 source "$HOME/.allshellsrc"
 
 # History control

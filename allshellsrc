@@ -11,9 +11,7 @@ if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 export PATH="$HOME/.bin:$PATH"
 
 # Add Homebrew PATHs
-brew=$(test -f "/opt/homebrew/bin/brew" && echo "/opt/homebrew/bin/brew" || echo "/usr/local/bin/brew")
-eval "$($brew shellenv)"
-unset brew
+eval "$(brew shellenv)"
 
 # Calculate brew prefix
 brew_prefix=$(brew --prefix)
