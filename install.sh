@@ -76,12 +76,10 @@ if hash brew 2>/dev/null; then
     brew bundle
   else
     brew install \
-      "asdf" \
       "bat" \
       "gh" \
       "jq" \
       "pick" \
-      "ripgrep" \
       "starship"
 
   fi
