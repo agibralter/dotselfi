@@ -75,7 +75,15 @@ if hash brew 2>/dev/null; then
     brew update && brew cleanup
     brew bundle
   else
-    brew bundle --file ./Brewfile-gitpod
+    brew install \
+      "asdf" \
+      "bat" \
+      "gh" \
+      "jq" \
+      "pick" \
+      "ripgrep" \
+      "starship"
+
   fi
 else
   echo "No homebrew, skipping brew."
