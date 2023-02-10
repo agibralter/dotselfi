@@ -71,8 +71,8 @@ relink starship.toml .config/starship.toml
 
 # Install all homebrew deps
 if hash brew 2>/dev/null; then
-  brew update && brew cleanup
   if [[ -z "${GITPOD_HOST:-}" ]]; then  
+    brew update && brew cleanup
     brew bundle
   else
     brew bundle --file ./Brewfile-gitpod
