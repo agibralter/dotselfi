@@ -70,7 +70,6 @@ mkdir -p "$HOME/config"
 relink starship.toml .config/starship.toml
 
 # Install all homebrew deps
-
 if hash brew 2>/dev/null; then
   brew update && brew cleanup
   if [[ -z "${GITPOD_HOST:-}" ]]; then  
@@ -80,4 +79,10 @@ if hash brew 2>/dev/null; then
   fi
 else
   echo "No homebrew, skipping brew."
+fi
+
+# Install poetry
+if ! hash poetry 2>/dev/null; then
+  echo "Installing poetry..."
+  curl -sSL https://install.python-poetry.org | python3 -
 fi
