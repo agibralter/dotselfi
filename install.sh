@@ -76,12 +76,10 @@ if hash brew 2>/dev/null; then
     brew bundle
   else
     brew install \
-      "bat" \
       "gh" \
       "jq" \
       "pick" \
       "starship"
-
   fi
 else
   echo "No homebrew, skipping brew."
@@ -91,4 +89,11 @@ fi
 if ! hash poetry 2>/dev/null; then
   echo "Installing poetry..."
   curl -sSL https://install.python-poetry.org | python3 -
+fi
+
+# Some gitpod tweaks
+if [[ -n "${GITPOD_HOST:-}" ]]; then
+  # Reset gitpod's credential helper
+  git config --global credential.helper "/usr/bin/gp credential-helper"
+  git config --global gpg.program "/usr/bin/gpg"
 fi

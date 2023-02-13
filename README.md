@@ -37,3 +37,25 @@ Vim will be messed up until running `:PlugInstall`
 ## iterm
 
 Set profile to use the Fira Code font.
+
+## gitpod
+
+To forward gpg signing to gitpod, add the following to .ssh/config:
+
+```plaintext
+Host *.ssh.ws*.gitpod.io
+  ForwardAgent yes
+  ServerAliveInterval 15
+  RemoteForward /home/gitpod/.gnupg/S.gpg-agent /Users/aarongibralter/.gnupg/S.gpg-agent.extra
+  StreamLocalBindUnlink yes
+```
+
+^ Right now I cannot get this to work without first removing the socket on the remote first.
+
+Then on the remote you need to run:
+
+```shell
+gpg --keyserver keys.openpgp.org --recv-keys FINGERPRINT
+gpgconf --kill gpg-agent
+git config --global user.signingkey FINGERPRINT
+```

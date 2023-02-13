@@ -10,8 +10,11 @@ if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
 
-# Add poetry
+# Add poetry to the PATH
 export PATH="/Users/aarongibralter/.local/bin:$PATH"
+
+# add Pulumi to the PATH
+export PATH="$PATH:$HOME/.pulumi/bin"
 
 # Add Homebrew PATHs
 eval "$(brew shellenv)"
