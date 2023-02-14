@@ -11,7 +11,7 @@ echo "Running $DIR/install-dotfiles.sh"
 
 function relink() {
   source_file="$DIR/$1"
-  if [ -z "${2:-}" ] ; then
+  if [[ -z "${2:-}" ]] ; then
     target_file="$HOME/.$1"
   else
     target_file="$HOME/$2"
@@ -60,6 +60,7 @@ relink iterm2_shell_integration.zsh
 relink rdebugrc
 relink rvmrc
 relink tmux.conf
+relink tool-versions
 relink vimrc
 relink zshrc
 
@@ -74,20 +75,22 @@ if hash brew 2>/dev/null; then
   if [[ -z "${GITPOD_HOST:-}" ]]; then  
     brew update && brew cleanup
     brew bundle
-  else
-    brew install \
-      "gh" \
-      "jq" \
-      "pick" \
-      "starship"
   fi
 else
   echo "No homebrew, skipping brew."
 fi
 
+if type asdf >>/dev/null 2>&1; then
+  printf "\n\n---Setting up asdf---\n\n"
+  asdf plugin-add nodejs || echo "asdf nodejs already added"
+  asdf plugin-add python || echo "asdf python already added"
+  
+  asdf install
+fi
+
 # Install poetry
 if ! hash poetry 2>/dev/null; then
-  echo "Installing poetry..."
+  printf "\n\n---Setting up poetry---\n\n"
   curl -sSL https://install.python-poetry.org | python3 -
 fi
 
@@ -96,4 +99,10 @@ if [[ -n "${GITPOD_HOST:-}" ]]; then
   # Reset gitpod's credential helper
   git config --global credential.helper "/usr/bin/gp credential-helper"
   git config --global gpg.program "/usr/bin/gpg"
+
+  brew install \
+      "gh" \
+      "jq" \
+      "pick" \
+      "starship"
 fi

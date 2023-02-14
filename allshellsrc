@@ -5,7 +5,7 @@
 
 # Source extras.
 # shellcheck disable=SC1091
-if [ -f "$HOME/.bash_extras" ]; then source "$HOME/.bash_extras"; fi
+if [[ -f "$HOME/.bash_extras" ]]; then source "$HOME/.bash_extras"; fi
 
 # Add custom bin directory to path.
 export PATH="$HOME/.bin:$PATH"
@@ -74,7 +74,7 @@ stty -ixoff
 ###############################################################################
 
 SOCK="/tmp/ssh-agent-$USER-screen"
-if test "$SSH_AUTH_SOCK" && [ "$SSH_AUTH_SOCK" != "$SOCK" ]; then
+if test "$SSH_AUTH_SOCK" && [[ "$SSH_AUTH_SOCK" != "$SOCK" ]]; then
   rm -f "/tmp/ssh-agent-$USER-screen"
   ln -sf "$SSH_AUTH_SOCK" "$SOCK"
   export SSH_AUTH_SOCK=$SOCK
@@ -105,11 +105,6 @@ export GOROOT
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 test -d "${GOPATH}" || mkdir "${GOPATH}"
 test -d "${GOPATH}/src/github.com" || mkdir -p "${GOPATH}/src/github.com"
-
-# Heroku Toolbelt
-if [ -d /usr/local/heroku/bin ]; then
-  export PATH="/usr/local/heroku/bin:$PATH"
-fi
 
 if hash rbenv 2>/dev/null; then
   eval "$(rbenv init -)"
@@ -204,7 +199,7 @@ fcd() {
 # fh - search in your command history and execute selected command
 fh() {
 	# shellcheck disable=SC2015
-  eval "$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')"
+  eval "$( ([[ -n "$ZSH_NAME" ]] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')"
 }
 
 # ch - browse chrome history
@@ -227,12 +222,12 @@ if hash nodenv 2>/dev/null; then
 fi
 
 # shellcheck disable=SC1090
-[ -f "$HOME/.fzf.$__shell" ] && source "$HOME/.fzf.$__shell"
+[[ -f "$HOME/.fzf.$__shell" ]] && source "$HOME/.fzf.$__shell"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Set up asdf
 __asdf_prefix="$brew_prefix/opt/asdf/libexec"
-[ -f "$__asdf_prefix/asdf.sh" ] && source "$__asdf_prefix/asdf.sh"
+[[ -f "$__asdf_prefix/asdf.sh" ]] && source "$__asdf_prefix/asdf.sh"
 unset __asdf_prefix
 
 # Set up direnv (must be last thing that modifies prompt).
