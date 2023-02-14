@@ -104,5 +104,6 @@ if [[ -n "${GITPOD_HOST:-}" ]]; then
       "gh" \
       "jq" \
       "pick" \
+      "diff-so-fancy" \
       "starship"
 fi
