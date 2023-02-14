@@ -100,6 +100,10 @@ if [[ -n "${GITPOD_HOST:-}" ]]; then
   git config --global credential.helper "/usr/bin/gp credential-helper"
   git config --global gpg.program "/usr/bin/gpg"
 
+  gpg --keyserver keys.openpgp.org --recv-keys 9777F36769D03F143B599A0AB6665CB9D9A31D96
+  gpgconf --kill gpg-agent
+  git config --global user.signingkey 9777F36769D03F143B599A0AB6665CB9D9A31D96
+
   brew install \
       "gh" \
       "jq" \
