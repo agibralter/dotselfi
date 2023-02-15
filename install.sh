@@ -100,7 +100,6 @@ if [[ -n "${GITPOD_HOST:-}" ]]; then
   git config --global credential.helper "/usr/bin/gp credential-helper"
 
   # Set up gpg
-  unlink /home/gitpod/.gnupg/S.gpg-agent
   git config --global gpg.program "/usr/bin/gpg"
   gpg --keyserver keys.openpgp.org --recv-keys 9777F36769D03F143B599A0AB6665CB9D9A31D96
   gpgconf --kill gpg-agent
