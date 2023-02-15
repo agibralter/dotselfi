@@ -16,6 +16,8 @@ Dotfiles. New and improved.
 * Chrome / Brave / Firefox
 * Docker for Mac
 * iTerm 2 / [Hyper](https://hyper.is/)
+* Little Snitch
+* Micro Snitch
 * Slack
 * Spotify
 
