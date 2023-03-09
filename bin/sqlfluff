@@ -18,4 +18,4 @@ docker build \
     -t sqlfluff-with-dbt "$HOME/.bin/sqlfluff-with-dbt-support" \
     >&6
 
-docker run -it --rm -v "$PWD:/sql" -v "$HOME/.dbt:/.dbt" sqlfluff-with-dbt:latest "$@"
+docker run --rm -v "$PWD:/sql" -v "$HOME/.dbt:/.dbt" -v "$HOME/.config:/.config" sqlfluff-with-dbt:latest "$@"
