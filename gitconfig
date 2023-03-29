@@ -18,7 +18,7 @@
   co   = checkout
   cob  = checkout -b
   cot  = checkout -t
-  cop  = "!git checkout $(git branch | cut -c 3- | pick)"
+  cop  = "!git branch | cut -c 3- | pick | xargs -I % git checkout %"
   cm   = commit
   a    = add
   s    = status
@@ -33,9 +33,10 @@
   bm   = branch -vv --color --merged
   bd   = branch -d
   bdd  = branch -D
-  bdp  = "!git branch -D $(git branch | cut -c 3- | pick)"
-  bmdp = "!git branch -d $(git branch --merged | cut -c 3- | pick)"
-  rip  = "!git rebase -i $(git branch | cut -c 3- | pick)"
+  bdp  = "!git branch | cut -c 3- | pick | xargs -I % git branch -D %"
+  bmdp = "!git branch --merged | cut -c 3- | pick | xargs -I % git branch -d %"
+  rip  = "!git branch | cut -c 3- | pick | xargs -I % sh -c 'git rebase -i % </dev/tty'"
+  brp  = "!git branch -r | cut -c 3- | grep -v HEAD | cut -d '/' -f 2- | pick | xargs -I % git checkout -b % --track origin/%"
   d    = diff
   dc   = diff --cached
   dw   = diff -w
