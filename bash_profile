@@ -35,5 +35,7 @@ fi
 # direnv
 # shellcheck disable=SC1090
 test -e "$HOME/.iterm2_shell_integration.bash" && source "$HOME/.iterm2_shell_integration.bash"
+# shellcheck disable=SC1090
+test -d "$HOME/.tea" && source <("$HOME/.tea/tea.xyz/v*/bin/tea" --magic=bash --silent)
 
 # vim:ft=bash:tw=0:ts=2:sw=2:noet:nolist:foldmethod=marker
