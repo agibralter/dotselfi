@@ -22,15 +22,15 @@ if application "zoom.us" is running then
 		tell application process "zoom.us"
 			if exists (menu bar item "Meeting" of menu bar 1) then
 				if exists (menu item MuteBtnTitle of menu 1 of menu bar item "Meeting" of menu bar 1) then
-					set muteState to ":mic.fill: | sfcolor=#53945d"
+					set muteState to ":mic.fill:"
 				else
-					set muteState to ":mic.slash.fill: | sfcolor=#ff4d40"
+					set muteState to ":mic.slash.fill:"
 				end if
 				if exists (menu item videoBtnTitle of menu 1 of menu bar item "Meeting" of menu bar 1) then
-					set videoState to "VIDEO ACTIVE"
+					set videoState to ":eye.fill:"
 					set pad1 to "     "
 				else
-					set videoState to "NO VIDEO"
+					set videoState to ":eye.slash.fill:"
 					set pad1 to "     "
 				end if
 				if exists (menu item shareBtnTitle of menu 1 of menu bar item "Meeting" of menu bar 1) then
