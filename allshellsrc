@@ -13,6 +13,9 @@ export PATH="$HOME/.bin:$PATH"
 # Add poetry to the PATH
 export PATH="/Users/aarongibralter/.local/bin:$PATH"
 
+# Add deno to the PATH
+export PATH="$HOME/.deno/bin:$PATH"
+
 # add Pulumi to the PATH
 export PATH="$PATH:$HOME/.pulumi/bin"
 
