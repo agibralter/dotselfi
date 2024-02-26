@@ -136,7 +136,7 @@ function aws-vault-use() {
 
 	# Avoid message about nested sessions
 	unset AWS_VAULT
-  
+
   if ! output="$(aws-vault exec "$profile" "$duration" -- env)"; then
     echo "$output" >&2
     return 1
@@ -229,6 +229,14 @@ fi
 # shellcheck disable=SC1090
 [[ -f "$HOME/.fzf.$__shell" ]] && source "$HOME/.fzf.$__shell"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Set up google-cloud-sdk
+__gcloud_sdk_prefix="$brew_prefix/share/google-cloud-sdk"
+# shellcheck disable=SC1090
+[[ -f "$__gcloud_sdk_prefix/path.$__shell.inc" ]] && source "$__gcloud_sdk_prefix/path.$__shell.inc"
+# shellcheck disable=SC1090
+[[ -f "$__gcloud_sdk_prefix/completion.$__shell.inc" ]] && source "$__gcloud_sdk_prefix/completion.$__shell.inc"
+unset __gcloud_sdk_prefix
 
 # Set up asdf
 __asdf_prefix="$brew_prefix/opt/asdf/libexec"
